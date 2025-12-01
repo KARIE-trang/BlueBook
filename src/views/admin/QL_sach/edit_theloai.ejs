@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sửa Thể Loại - BlueBook</title>
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/admin/css/QL_sach/edit_theloai.css" />
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header class="header">
+      <a href="/admin/home" class="logo">
+        <i class="fa-solid fa-book-open"></i>
+        <span>Blue</span>Book
+      </a>
+    </header>
+
+    <div class="container-content">
+      <!-- BACK -->
+      <a href="/admin/quanlysach" class="back-link">
+        <i class="fa-solid fa-arrow-left"></i> Quay về Quản Lý Sách
+      </a>
+
+      <!-- TITLE -->
+      <h1 class="page-title">CHỈNH SỬA THỂ LOẠI</h1>
+      <h2 class="page-subtitle">Cập nhật thông tin Thể loại</h2>
+
+      <!-- FORM BOX -->
+      <div class="form-box">
+        <form
+          action="/admin/edit_theloai/<%=theloai.matheloai%>"
+          method="POST"
+          id="edit-category-form"
+        >
+          <div class="form-group">
+            <label for="matheloai">Mã Thể Loại</label>
+            <input
+              type="text"
+              id="matheloai"
+              name="matheloai"
+              value="<%=theloai.matheloai%>"
+              disabled
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="tentheloai">Tên Thể Loại</label>
+            <input
+              type="text"
+              id="tentheloai"
+              name="tentheloai"
+              value="<%=theloai.tentheloai%>"
+              required
+            />
+          </div>
+
+          <div class="error">
+            <%if(error==2){ %>
+            <p>Tên thể loại đã tồn tại</p>
+            <% }%>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="submit-btn">
+              <i class="fa-solid fa-floppy-disk"></i> Lưu thay đổi
+            </button>
+
+            <a href="/admin/quanlysach" class="cancel-btn">
+              <i class="fa-solid fa-xmark"></i> Hủy
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      const input = document.getElementById("tentheloai");
+
+      input.addEventListener("focus", () => {
+        input.parentElement.classList.add("active");
+      });
+
+      input.addEventListener("blur", () => {
+        if (input.value.trim() === "") {
+          input.parentElement.classList.remove("active");
+        }
+      });
+    </script>
+  </body>
+</html>

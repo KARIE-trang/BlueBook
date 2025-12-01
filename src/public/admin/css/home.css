@@ -1,0 +1,232 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+}
+
+body {
+  background: #f5f7fc;
+  color: #1a1e2e;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* HEADER */
+.admin-header {
+  width: 100%;
+  background: linear-gradient(
+    135deg,
+    #6f89d8,
+    #295abd
+  ); /* ⭐ chỉnh lại cho logo trắng nổi */
+  padding: 18px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+a {
+  text-decoration: none;
+}
+.logo {
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 0.3px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffffff; /* trắng sắc nét */
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.15); /* ⭐ tăng độ nổi */
+}
+
+.logo span {
+  color: #ffffff; /* cho đồng bộ, tránh bị nhợt */
+}
+
+.logo i {
+  font-size: 30px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.2); /* nhẹ hơn để icon không bị “cục" */
+  border-radius: 12px;
+}
+
+.btn-logout {
+  background: rgba(255, 255, 255, 0.25);
+  padding: 10px 26px;
+  border-radius: 30px;
+  text-decoration: none;
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+  transition: 0.25s ease;
+}
+
+.btn-logout:hover {
+  background: #fff;
+  color: #6f89d8;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+/* MAIN WRAPPER */
+.admin-container {
+  width: 90%;
+  max-width: 1180px;
+  margin: 50px auto;
+  text-align: center;
+}
+
+.title {
+  font-size: 38px;
+  font-weight: 900;
+  color: #1a1e2e;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #435076;
+  margin-top: 6px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  line-height: 1.5;
+  opacity: 0;
+  animation: fadeText 0.6s ease forwards;
+}
+
+@keyframes fadeText {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.section-title {
+  margin: 20px 0 28px;
+  color: #2f75a6;
+  font-weight: 900;
+  font-size: 20px;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  gap: 30px;
+  margin-top: 20px;
+}
+
+/* CARD */
+.card {
+  background: white;
+  padding: 22px 26px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  position: relative;
+  box-shadow: 0px 8px 20px rgba(100, 110, 150, 0.15);
+  transition: 0.25s ease;
+  border: 1px solid rgba(200, 200, 230, 0.25);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0px 14px 28px rgba(90, 100, 160, 0.25);
+}
+
+/* ICON */
+.icon {
+  width: 62px;
+  height: 62px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #6f89d8, #295abd);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 26px;
+  box-shadow: 0px 8px 18px rgba(90, 110, 220, 0.35);
+}
+
+/* INFO */
+.info h4 {
+  font-size: 20px;
+  font-weight: 900;
+  color: #1a1e2e;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+.info p {
+  font-size: 14px;
+  margin-top: 5px;
+  color: #6b7398;
+}
+
+/* BUTTON CHI TIẾT */
+.detail-btn {
+  margin-left: auto;
+  background: linear-gradient(135deg, #6f89d8, #295abd);
+  padding: 10px 26px;
+  border-radius: 30px;
+  color: white;
+  font-weight: 800;
+  text-decoration: none;
+  transition: 0.25s ease;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+}
+
+.detail-btn:hover {
+  background: #6f89d8;
+  transform: translateY(-2px);
+  box-shadow: 0px 6px 15px rgba(120, 140, 220, 0.3);
+}
+
+/* RESPONSIVE */
+@media (max-width: 500px) {
+  .card {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px;
+  }
+
+  .detail-btn {
+    margin: 14px auto 0;
+  }
+}
+.admin-header {
+  position: relative;
+}
+
+.admin-header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #ffffff55, #ffffffaa, #ffffff55);
+}

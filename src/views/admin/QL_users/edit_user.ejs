@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap&subset=vietnamese"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/admin/css/QL_users/edit_user.css" />
+    <title>Sửa Người Dùng</title>
+  </head>
+
+  <body>
+    <header class="admin-header">
+  <a href="/admin/home" class="logo">
+    <i class="fa-solid fa-book-open"></i>
+    <span>Blue</span>Book
+  </a>
+</header>
+
+
+    <!-- BACK LINK -->
+    <a class="back-link" href="/quanlykhachhang">
+      <i class="fas fa-arrow-left"></i> Quay về danh sách
+    </a>
+
+    <!-- TITLE -->
+    <h1 class="page-title">Sửa Thông Tin Người Dùng</h1>
+
+    <!-- LAYOUT 2 CỘT -->
+    <div class="edit-container">
+        <form action="/edit_user/<%=users.user_id%>" method ='post'>
+      <div class="edit-form">
+        <label>Tài khoản</label>
+        <input type="text" name="taikhoan" value="<%=users.taikhoan%>" />
+
+        <label>Mật khẩu</label>
+        <input type="text" name="matkhau" value="<%=users.matkhau%>" />
+
+        <label>Họ tên</label>
+        <input type="text" name="hoten" value="<%=users.hoten%>" />
+
+        <label>Email</label>
+        <input type="text" name="email" value="<%=users.email%>" />
+        <div class="error">
+            <% if(error){
+            %>
+            <p>Tài khoản hoặc email đã được sử dụng</p>
+            <%
+            }
+            %>
+        </div>
+        
+        <!-- NÚT CĂN GIỮA -->
+        <div class="btn-center">
+          <button class="btn-save">
+            <i class="fa-regular fa-floppy-disk"></i> Lưu thay đổi
+          </button>
+
+          <button class="btn-cancel">
+            <i class="fa-solid fa-xmark"></i> Hủy
+          </button>
+        </div>
+        </form>
+      </div>
+
+      <!-- THẺ USER BÊN PHẢI -->
+      <div class="user-card">
+        <div class="avatar-wrapper">
+          <img src="/admin/img/avt.png" class="avatar" />
+        </div>
+
+        <h2 class="user-name"><%=users.taikhoan%></h2>
+        <p class="user-email"><%=users.email%></p>
+
+        <div class="info-box">
+          <p><b>ID:</b> <%=users.user_id%></p>
+          <p><b>Vai trò:</b> <%=users.role%></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

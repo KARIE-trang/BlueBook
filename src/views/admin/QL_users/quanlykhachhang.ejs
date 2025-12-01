@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản lý Khách Hàng - BlueBook</title>
+
+    <link rel="stylesheet" href="/admin/css/QL_users/quanlykhachhang.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap&subset=vietnamese"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <a href="/admin/home" class="logo">
+          <i class="fa-solid fa-book-open"></i> Blue<span>Book</span>
+        </a>
+      </div>
+    </header>
+
+    <div class="container-content">
+      <a href="/admin/home" class="back-link">
+        <i class="fas fa-arrow-left"></i> Quay về Trang Chủ
+      </a>
+
+      <h1 class="page-title">QUẢN LÝ KHÁCH HÀNG</h1>
+      <h2>Danh sách Khách hàng</h2>
+      <a href="/add_user" class="add-btn">
+        <i class="fa-solid fa-user-plus"></i> Thêm Khách Hàng
+      </a>
+
+      <table>
+        <thead>
+          <tr>
+            <th>User ID</th>
+            <th>Tài Khoản</th>
+            <th>Mật Khẩu</th>
+            <th>Họ Tên</th>
+            <th>Email</th>
+            <th>Hành động</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(let i = 0 ; i < user.length; i++){ %>
+          <tr>
+            <td><%= user[i].user_id %></td>
+            <td><%= user[i].taikhoan %></td>
+            <td><%= user[i].matkhau %></td>
+            <td><%= user[i].hoten %></td>
+            <td><%= user[i].email %></td>
+            <td>
+              <a
+                href="/edit_user/<%= user[i].user_id %>"
+                class="action-btn view-btn"
+              >
+                <i class="fa-solid fa-pen-to-square"></i> Sửa
+              </a>
+
+              <a
+                href="#"
+                class="action-btn delete-btn"
+                data-id="<%= user[i].user_id %>"
+                data-name="<%= user[i].taikhoan %>"
+              >
+                <i class="fa-solid fa-trash"></i> Xóa
+              </a>
+            </td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ===== MODAL XÁC NHẬN XÓA ===== -->
+    <div id="delete-modal" class="modal-overlay">
+      <div class="modal-box">
+        <h3>Xác nhận xóa</h3>
+        <p id="delete-message">Bạn có chắc chắn muốn xóa?</p>
+
+        <div class="modal-actions">
+          <button id="confirm-delete" class="btn-confirm">Đồng ý</button>
+          <button id="cancel-delete" class="btn-cancel">Hủy</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SCRIPT ===== -->
+    <script>
+      const deleteButtons = document.querySelectorAll(".delete-btn");
+      const modal = document.getElementById("delete-modal");
+      const msg = document.getElementById("delete-message");
+      const confirmBtn = document.getElementById("confirm-delete");
+      const cancelBtn = document.getElementById("cancel-delete");
+
+      let deleteUrl = "";
+
+      deleteButtons.forEach((btn) => {
+        btn.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const userId = this.getAttribute("data-id");
+          const username = this.getAttribute("data-name");
+
+          msg.innerHTML = `Bạn có chắc chắn muốn xóa <b>User ID ${userId}</b> – <b>${username}</b>?`;
+
+          deleteUrl = `/delete/${userId}`;
+
+          modal.style.display = "flex";
+        });
+      });
+
+      confirmBtn.addEventListener("click", () => {
+        window.location.href = deleteUrl;
+      });
+
+      cancelBtn.addEventListener("click", () => {
+        modal.style.display = "none";
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,447 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+}
+
+body {
+  background: #f5f7fc;
+  color: #1a1e2e;
+}
+
+.header {
+  width: 100%;
+  background: linear-gradient(135deg, #6f89d8, #295abd);
+  padding: 18px 50px;
+
+  display: flex;
+  justify-content: center; /* ⭐ CĂN GIỮA LOGO */
+  align-items: center;
+
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+a {
+  text-decoration: none;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 0.3px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: #ffffff;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
+}
+
+.logo span {
+  color: #ffffff;
+}
+
+.logo i {
+  font-size: 30px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+}
+
+/* WRAPPER */
+.container-content {
+  width: 90%;
+  max-width: 1200px;
+  margin: 35px auto;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #4d6bff;
+  font-weight: 900;
+  margin-bottom: 18px;
+  transition: 0.2s ease;
+}
+
+.back-link:hover {
+  color: #3a4eff;
+  transform: translateX(-3px);
+}
+
+/* TITLES */
+.page-title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 900;
+  color: #1a1e2e;
+  margin: 25px 0 10px;
+  position: relative;
+}
+
+.page-title::after {
+  content: "";
+  width: 90px;
+  height: 4px;
+  background: #4d6bff;
+  border-radius: 3px;
+  margin: 10px auto 0;
+  display: block;
+}
+
+.page-subtitle {
+  text-align: center;
+  color: #6b77a8;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+/* BUTTONS */
+.add-btn {
+  background: #7a93f8;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.add-btn:hover {
+  background: #6b84ea;
+}
+
+/* TABLE */
+.table-wrapper {
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 50px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background: #d7e1ff;
+}
+
+th {
+  padding: 16px;
+  font-size: 16px;
+  color: #2a48c8;
+  text-align: center;
+  font-weight: 800;
+}
+
+td {
+  padding: 16px;
+  font-size: 15px;
+  color: #2c2f42;
+  text-align: center;
+}
+
+tbody tr {
+  border-bottom: 1px solid #e5e7f0;
+}
+
+tbody tr:last-child {
+  border-bottom: none;
+}
+
+tbody tr:hover {
+  background: #f3f6ff;
+}
+
+/* IMAGE */
+.img-thumb {
+  width: 60px;
+  height: 80px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+/* ACTION BUTTONS */
+.action-btn {
+  padding: 8px 14px;
+  border-radius: 10px;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  margin: 4px 4px;
+  display: inline-flex;
+  gap: 6px;
+}
+
+.action-btn.edit {
+  background: #5c77d8;
+}
+
+.action-btn.edit:hover {
+  background: #4e69c9;
+}
+
+.action-btn.delete-btn {
+  background: #e74c3c;
+}
+
+.action-btn.delete-btn:hover {
+  background: #c0392b;
+}
+
+/* STATS */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.stat-card h3 {
+  font-size: 18px;
+  color: #2a2d42;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.stat-value {
+  display: block;
+  font-size: 26px;
+  font-weight: 900;
+  color: #4d6bff;
+  margin: 10px 0;
+}
+
+.stat-card p {
+  color: #6b77a8;
+  font-size: 14px;
+}
+
+/* HEADER EFFECT */
+.header {
+  position: relative;
+}
+
+.header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #ffffff55, #ffffffaa, #ffffff55);
+}
+
+/* LOAD MORE */
+.hidden-row {
+  display: none;
+}
+
+.load-more-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* MODAL */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal-content {
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+  width: 360px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  animation: popup 0.2s ease;
+}
+
+@keyframes popup {
+  from {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modal-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.confirm-btn {
+  padding: 10px 20px;
+  background: #ff4d4f;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cancel-btn {
+  padding: 10px 20px;
+  background: #e6e8ee;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+}
+
+.confirm-btn:hover {
+  background: #e04445;
+}
+.cancel-btn:hover {
+  background: #d4d6dd;
+}
+/* ============================
+        GRID 4 Ô
+============================ */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  margin-top: 25px;
+}
+
+/* ============================
+        CARD CHÍNH
+============================ */
+.stat-card {
+  background: #fff;
+  border-radius: 20px;
+
+  /* ⭐ viền xanh luôn xuất hiện (rất nhẹ) */
+  border: 1px solid rgba(77, 107, 255, 0.35);
+  box-shadow: 0 0 0 3px rgba(77, 107, 255, 0.15),
+    /* glow nhẹ */ 0 4px 12px rgba(0, 0, 0, 0.08); /* bóng */
+
+  height: 310px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+    background-color 0.25s ease;
+  cursor: pointer;
+}
+
+/* ============================
+        HOVER CARD
+============================ */
+.stat-card:hover {
+  transform: translateY(-8px) scale(1.02);
+
+  box-shadow: 0 0 0 4px rgba(77, 107, 255, 0.35),
+    /* glow đậm */ 0 12px 28px rgba(0, 0, 0, 0.15);
+  background-color: #f9faff;
+}
+
+.stat-title,
+.stat-value,
+.stat-desc {
+  transition: color 0.25s ease;
+}
+
+.stat-card:hover .stat-title {
+  color: #232323;
+}
+
+.stat-card:hover .stat-value {
+  color: #6b7bff;
+}
+
+.stat-card:hover .stat-desc {
+  color: #545454;
+}
+
+/* hiệu ứng nhẹ cho phần giữa */
+.stat-middle {
+  transition: background-color 0.25s ease;
+}
+
+/* ============================
+        3 PHẦN CỐ ĐỊNH
+============================ */
+.stat-part {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px 16px;
+  overflow: hidden; /* KHÔNG TRÀN SANG PHẦN KHÁC */
+}
+
+/* Phần 1 */
+.stat-top {
+  flex: 0 0 80px;
+}
+
+/* Phần 2 */
+.stat-middle {
+  flex: 0 0 120px;
+}
+
+/* Phần 3 – CAO HƠN */
+.stat-bottom {
+  flex: 0 0 110px;
+}
+
+/* ============================
+        TEXT STYLE
+============================ */
+.stat-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #1a1e2e;
+  line-height: 1.3;
+}
+
+.stat-value {
+  font-size: 22px;
+  font-weight: 900;
+  color: #5991e0;
+  line-height: 1.3;
+}
+
+.stat-value-small {
+  font-size: 20px;
+}
+
+.stat-desc {
+  font-size: 16px;
+  color: #6d6d6d;
+  line-height: 1.4;
+}

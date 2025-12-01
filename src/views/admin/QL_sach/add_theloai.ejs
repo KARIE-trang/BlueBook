@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thêm Thể Loại - BlueBook</title>
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/admin/css/QL_sach/add_theloai.css" />
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header class="header">
+      <a href="/admin/home" class="logo">
+        <i class="fa-solid fa-book-open"></i>
+        <span>Blue</span>Book
+      </a>
+    </header>
+
+    <div class="container-content">
+      <!-- BACK -->
+      <a href="/admin/quanlysach" class="back-link">
+        <i class="fa-solid fa-arrow-left"></i> Quay về Quản Lý Sách
+      </a>
+
+      <!-- TITLE -->
+      <h1 class="page-title">THÊM THỂ LOẠI MỚI</h1>
+      <h2 class="page-subtitle">Nhập thông tin Thể loại</h2>
+
+      <!-- FORM BOX -->
+      <div class="form-box">
+        <form action="/admin/add_theloai" method="POST" id="category-form">
+          <div class="form-group">
+            <label for="tentheloai">Tên Thể Loại</label>
+            <input
+              type="text"
+              id="tentheloai"
+              name="tentheloai"
+              placeholder="Nhập tên thể loại..."
+              required
+            />
+          </div>
+          <div class="error">
+            <%if (error == 1){ %>
+            <p>Tên thể loại đã tồn tại</p>
+            <% }%>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="submit-btn">
+              <i class="fa-solid fa-plus"></i> Thêm Thể Loại
+            </button>
+
+            <button type="reset" class="reset-btn">
+              <i class="fa-solid fa-rotate-left"></i> Làm mới
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- JS hiệu ứng nhỏ -->
+    <script>
+      const input = document.getElementById("tentheloai");
+
+      input.addEventListener("focus", () => {
+        input.parentElement.classList.add("active");
+      });
+
+      input.addEventListener("blur", () => {
+        if (input.value.trim() === "") {
+          input.parentElement.classList.remove("active");
+        }
+      });
+    </script>
+  </body>
+</html>

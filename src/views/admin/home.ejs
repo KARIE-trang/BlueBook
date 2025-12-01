@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản Trị BlueBook</title>
+
+    <link rel="stylesheet" href="/admin/css/home.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap&subset=vietnamese"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header class="admin-header">
+      <a href="/admin/home" class="logo">
+        <i class="fa-solid fa-book-open"></i>
+        <span>Blue</span>Book
+      </a>
+
+      <a href="/logout" class="btn-logout">
+        <i class="fas fa-sign-out-alt"></i> Đăng Xuất
+      </a>
+    </header>
+
+    <!-- MAIN -->
+    <div class="admin-container">
+      <h1 class="title">Quản Lí Cửa Hàng</h1>
+      <p class="subtitle">
+        Chào mừng trở lại, hãy chọn một phân hệ để tiếp tục.
+      </p>
+
+      <h3 class="section-title">Chức năng chính</h3>
+
+      <!-- GRID -->
+      <div class="grid">
+        <div class="card">
+          <div class="icon"><i class="fa-solid fa-box"></i></div>
+          <div class="info">
+            <h4>Quản Lý Sản Phẩm</h4>
+            <p>Thêm, sửa, xóa, cập nhật sản phẩm</p>
+          </div>
+          <a href="/admin/quanlysach" class="detail-btn">Chi Tiết</a>
+        </div>
+
+        <div class="card">
+          <div class="icon"><i class="fa-solid fa-user-group"></i></div>
+          <div class="info">
+            <h4>Quản Lý Khách Hàng</h4>
+            <p>Xem, phân tích thông tin khách hàng</p>
+          </div>
+          <a href="/quanlykhachhang" class="detail-btn">Chi Tiết</a>
+        </div>
+
+        <div class="card">
+          <div class="icon"><i class="fa-solid fa-chart-line"></i></div>
+          <div class="info">
+            <h4>Quản Lí Doanh Thu</h4>
+            <p>Theo dõi, thống kê doanh thu</p>
+          </div>
+          <a href="thongke_doanhthutong.html" class="detail-btn">Chi Tiết</a>
+        </div>
+
+        <div class="card">
+          <div class="icon"><i class="fa-solid fa-file-invoice"></i></div>
+          <div class="info">
+            <h4>Quản Lí Đơn Hàng</h4>
+            <p>Quản lý trạng thái & chi tiết đơn hàng</p>
+          </div>
+          <a href="/admin/quanlydonhang" class="detail-btn">Chi Tiết</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

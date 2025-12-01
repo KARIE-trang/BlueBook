@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thêm Khách Hàng - BlueBook</title>
+
+    <link rel="stylesheet" href="/admin/css/QL_users/add_user.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- ===== HEADER MINI ===== -->
+    <header class="header-mini">
+      <a href="/admin/home" class="logo-mini">
+        <i class="fa-solid fa-book-open"></i> Blue<span>Book</span>
+      </a>
+    </header>
+
+    <div class="container-content">
+      <a href="/quanlykhachhang" class="back-link">
+        <i class="fas fa-arrow-left"></i> Quay về danh sách
+      </a>
+
+      <h1 class="page-title">THÊM KHÁCH HÀNG MỚI</h1>
+
+      <!-- ===== CARD FORM ===== -->
+      <div class="add-card">
+        <div class="card-header">
+          <i class="fa-solid fa-user-plus"></i>
+          Thông tin khách hàng
+        </div>
+
+        <form action="/add_user" method="POST" class="card-body">
+          <div class="form-group">
+            <label><i class="fa-solid fa-user"></i> Tài khoản</label>
+            <input
+              type="text"
+              name="taikhoan"
+              placeholder="Nhập tài khoản..."
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label><i class="fa-solid fa-lock"></i> Mật khẩu</label>
+            <input
+              type="password"
+              name="matkhau"
+              placeholder="Nhập mật khẩu..."
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label><i class="fa-solid fa-id-card"></i> Họ tên</label>
+            <input
+              type="text"
+              name="hoten"
+              placeholder="Nhập họ tên..."
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label><i class="fa-solid fa-envelope"></i> Email</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="Nhập email..."
+              required
+            />
+          </div>
+          <div class="error">
+            <% if (error==2){ %>
+            <p>Tài khoản hoặc email đã được sử dụng</p>
+            <% }%>
+          </div>
+          <button type="submit" class="btn-add">
+            <i class="fa-solid fa-plus"></i> Thêm khách hàng
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,201 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+}
+
+body {
+  background: #f5f7fc;
+  color: #1a1e2e;
+}
+
+/* ===== HEADER MINI ===== */
+.header-mini {
+  width: 100%;
+  background: linear-gradient(135deg, #6f89d8, #295abd);
+  padding: 18px 50px;
+
+  display: flex;
+  justify-content: center; /* ⭐ vẫn căn giữa */
+  align-items: center;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+}
+
+/* Logo mini (nhỏ hơn admin chính) */
+.logo-mini {
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 0.4px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: #ffffff;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
+}
+
+.logo-mini i {
+  font-size: 30px;
+  padding: 6px 8px;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 10px;
+}
+a {
+  text-decoration: none;
+}
+/* ===== CONTAINER ===== */
+.container-content {
+  width: 90%;
+  max-width: 650px;
+  margin: 35px auto;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #354fd1;
+  font-weight: 900;
+  text-decoration: none;
+  margin-bottom: 20px;
+  margin-left: 60px;
+  transition: 0.2s ease;
+}
+
+.back-link:hover {
+  color: #3a4eff;
+  transform: translateX(-4px);
+}
+
+.page-title {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  color: #2d2f48;
+  position: relative;
+}
+
+.page-title::after {
+  content: "";
+  width: 70px;
+  height: 3px;
+  background: #4d6bff;
+  border-radius: 6px;
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ===== CARD FORM ===== */
+.add-card {
+  max-width: 520px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 22px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12), 0 8px 15px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e7ebff;
+  overflow: hidden;
+  animation: fadeUp 0.4s ease;
+}
+
+.card-header {
+  background: linear-gradient(135deg, #6f89d8, #295abd);
+  color: white;
+  padding: 20px;
+  font-size: 19px;
+  font-weight: 800;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-body {
+  padding: 28px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-group label {
+  font-weight: 700;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 12px;
+  border: 1px solid #d4d7e4;
+  background: #f7f8ff;
+  transition: 0.2s ease;
+}
+
+.form-group input:focus {
+  border-color: #4d6bff;
+  box-shadow: 0 0 0 3px rgba(77, 107, 255, 0.25);
+  background: white;
+}
+
+/* BUTTON */
+.btn-add {
+  width: 100%;
+  border: none;
+  padding: 14px;
+  background: linear-gradient(135deg, #6f89d8, #295abd);
+  color: white;
+  font-size: 17px;
+  font-weight: 800;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  transition: 0.25s ease;
+}
+
+.btn-add:hover {
+  background: #3a4eff;
+  transform: translateY(-2px);
+}
+
+/* Animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.header-mini {
+  position: relative;
+}
+
+.header-mini::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #ffffff55, #ffffffaa, #ffffff55);
+}
+.error {
+  color: red;
+  text-align: center;
+}

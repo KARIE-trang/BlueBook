@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sửa Sách</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/admin/css/QL_sach/edit_sach.css" />
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header class="admin-header">
+      <a href="/admin/home" class="logo">
+        <i class="fa-solid fa-book-open"></i>
+        <span>Blue</span>Book
+      </a>
+    </header>
+
+    <!-- BACK -->
+    <a class="back-link" href="/admin/quanlysach">
+      <i class="fa-solid fa-arrow-left"></i> Quay về danh sách
+    </a>
+
+    <!-- TITLE -->
+    <h1 class="page-title">Sửa Thông Tin Sách</h1>
+
+    <div class="edit-container">
+      <!-- FORM TRÁI -->
+      <form class="edit-form" method="post" enctype="multipart/form-data">
+        <label>Tên Sách</label>
+        <input type="text" name="tensach" value="<%= sach.tensach %>" />
+
+        <label>Tác Giả</label>
+        <input type="text" name="tentacgia" value="<%= sach.tentacgia %>" />
+
+        <label>Ngày phát hành</label>
+        <input
+          type="date"
+          name="ngayphathanh"
+          value="<%= sach.ngayphathanh %>"
+        />
+
+        <label>Giá bán (VNĐ)</label>
+        <input type="text" name="giaban" value="<%= sach.giaban %>" />
+
+        <label>Số lượng tồn kho</label>
+        <input type="text" name="sl_tonkho" value="<%= sach.sl_tonkho %>" />
+
+        <label>Thể Loại</label>
+        <select name="matheloai" required>
+          <option value="<%= sach.matheloai %>" selected>
+            <%= sach.tentheloai %>
+          </option>
+          <% for (let i = 0; i < theloai.length; i++) { if (theloai[i].matheloai
+          != sach.matheloai) { %>
+          <option value="<%= theloai[i].matheloai %>">
+            <%= theloai[i].tentheloai %>
+          </option>
+          <% }} %>
+        </select>
+
+        <label>Mô tả</label>
+        <textarea rows="5" name="mota"><%= sach.mota %></textarea>
+
+        <label>Đổi ảnh bìa</label>
+        <label class="upload-btn">
+          <i class="fa-solid fa-upload"></i> Chọn ảnh mới
+          <input type="file" name="hinhanh" accept="image/*" id="hinhanh" />
+        </label>
+
+        <!-- PREVIEW -->
+        <div id="preview-box">
+          <img id="preview-img" alt="Preview" />
+        </div>
+
+        <!-- HIDDEN OLD IMAGE -->
+        <input type="hidden" name="oldImage" value="<%= sach.hinhanh %>" />
+
+        <!-- BUTTON -->
+        <div class="btn-center">
+          <button class="btn-save">
+            <i class="fa-regular fa-floppy-disk"></i> Cập nhật
+          </button>
+          <a href="/admin/quanlysach" class="btn-cancel">
+            <i class="fa-solid fa-xmark"></i> Hủy
+          </a>
+        </div>
+      </form>
+
+      <!-- CARD PHẢI -->
+      <div class="book-card">
+        <div class="book-img-wrapper">
+          <img src="/uploads/<%= sach.hinhanh %>" class="book-img" />
+        </div>
+
+        <h2 class="book-name"><b>Tên Sách: </b><%= sach.tensach %></h2>
+        <p class="book-author"><b>Tên tác giả: </b><%= sach.tentacgia %></p>
+
+        <div class="info-box">
+          <p><b>Mã sách: </b><%= sach.masach %></p>
+          <p><b>Thể loại: </b><%= sach.tentheloai %></p>
+          <p><b>Tồn kho: </b><%= sach.sl_tonkho %></p>
+          <p><b>Giá bán: </b><%= sach.giaban %> VNĐ</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PREVIEW SCRIPT -->
+    <script>
+      const inputImage = document.getElementById("hinhanh");
+      const previewBox = document.getElementById("preview-box");
+      const previewImg = document.getElementById("preview-img");
+
+      inputImage.addEventListener("change", function () {
+        const file = this.files[0];
+        if (file) {
+          const imgURL = URL.createObjectURL(file);
+          previewImg.src = imgURL;
+          previewBox.style.display = "block";
+        } else {
+          previewBox.style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>

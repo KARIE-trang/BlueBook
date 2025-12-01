@@ -1,0 +1,258 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: #f6f7fb;
+  color: #1a1e2e;
+}
+a {
+  text-decoration: none;
+}
+/* HEADER */
+.admin-header {
+  width: 100%;
+  background: linear-gradient(135deg, #6f89d8, #295abd);
+  padding: 18px 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(4px);
+}
+
+.logo {
+  font-size: 30px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+}
+
+.logo i {
+  font-size: 30px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 14px;
+}
+.sdmin-header {
+  position: relative;
+}
+
+.admin-header::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #ffffff55, #ffffffaa, #ffffff55);
+}
+
+/* BACK LINK */
+.back-link {
+  width: 90%;
+  max-width: 1100px;
+  margin: 30px auto 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 900;
+  color: #4d6bff;
+  transition: 0.25s ease;
+}
+
+.back-link:hover {
+  color: #2e48b7;
+  transform: translateX(-4px);
+}
+
+/* TITLE */
+.page-title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 900;
+  margin-bottom: 25px;
+}
+
+.page-title::after {
+  content: "";
+  width: 110px;
+  height: 4px;
+  background: linear-gradient(90deg, #6f89d8, #295abd);
+  display: block;
+  margin: 12px auto 0;
+  border-radius: 4px;
+}
+
+/* CONTAINER */
+.order-container {
+  width: 90%;
+  max-width: 1200px;
+  background: white;
+  margin: 0 auto;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.12);
+  border: 1px solid #e5e7f2;
+}
+
+/* TABLE */
+.order-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* ⭐ CHỈNH CHỦ YẾU */
+}
+
+.order-table thead {
+  background: #eef1fb;
+}
+
+.order-table th:nth-child(1) {
+  width: 90px;
+}
+.order-table th:nth-child(2) {
+  width: 140px;
+}
+.order-table th:nth-child(3) {
+  width: 180px;
+}
+.order-table th:nth-child(4) {
+  width: 130px;
+}
+.order-table th:nth-child(5) {
+  width: 130px;
+}
+.order-table th:nth-child(6) {
+  width: 240px;
+}
+.order-table th {
+  padding: 14px;
+  font-weight: 800;
+  font-size: 15px;
+  color: #2b3258;
+  border-bottom: 1px solid #dfe3f3;
+  text-align: center;
+}
+
+.order-table td {
+  padding: 14px;
+  font-weight: 600;
+  color: #2f3556;
+  border-bottom: 1px solid #eef0f7;
+  transition: background 0.2s ease;
+  text-align: center;
+}
+
+.order-table tr:hover td {
+  background: #f5f7ff;
+}
+
+/* STATUS BADGES */
+.status {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: 800;
+  font-size: 13px;
+  display: inline-block;
+}
+
+.status-new {
+  background: #fff6d6;
+  color: #c58a00;
+}
+
+.status-done {
+  background: #dff6e4;
+  color: #1f8b4c;
+}
+
+.status-cancel {
+  background: #ffe1e1;
+  color: #da3a3a;
+}
+
+/* ACTIONS */
+.action-cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+}
+
+/* STATUS FORM */
+.status-form {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-form select {
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid #d3d7e7;
+  background: #f9f9ff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.status-form select:focus {
+  border-color: #6f89d8;
+  background: #fff;
+}
+
+.status-form button {
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #4d6bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.status-form button:hover {
+  background: #3756e8;
+  transform: translateY(-2px);
+}
+
+/* VIEW / DELETE BUTTON */
+.btn-view,
+.btn-delete {
+  padding: 10px 12px;
+  border-radius: 12px;
+  color: white;
+  transition: 0.25s ease;
+}
+
+.btn-view {
+  background: #4d6bff;
+}
+.btn-view:hover {
+  background: #2f47d3;
+  transform: translateY(-2px);
+}
+
+.btn-delete {
+  background: #ff5b5b;
+}
+.btn-delete:hover {
+  background: #e64242;
+  transform: translateY(-2px);
+}
+
+/* EMPTY MESSAGE */
+.no-orders {
+  margin-top: 25px;
+  text-align: center;
+  color: #6d6d6d;
+  font-style: italic;
+}

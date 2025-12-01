@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thêm Sách Mới - BlueBook</title>
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/admin/css/QL_sach/add_sach.css" />
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header class="header">
+      <a href="/admin/home" class="logo">
+        <i class="fa-solid fa-book-open"></i>
+        <span>Blue Book</span>
+      </a>
+    </header>
+
+    <div class="container">
+      <!-- BACK -->
+      <a href="/admin/quanlysach" class="back-link">
+        <i class="fa-solid fa-arrow-left"></i> Quay về Danh sách Sách
+      </a>
+
+      <!-- TITLE -->
+      <h1 class="page-title">THÊM SÁCH MỚI</h1>
+
+      <!-- FORM -->
+      <form
+        class="product-form"
+        method="post"
+        enctype="multipart/form-data"
+        action="/admin/add_book"
+      >
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Tên Sách <span>*</span></label>
+            <input type="text" name="tensach" required />
+          </div>
+
+          <div class="form-group">
+            <label>Tác Giả <span>*</span></label>
+            <input type="text" name="tentacgia" required />
+          </div>
+
+          <div class="form-group">
+            <label>Ngày phát hành<span>*</span></label>
+            <input type="date" name="ngayphathanh" />
+          </div>
+          <div class="form-group">
+            <label>Giá bán (VNĐ) <span>*</span></label>
+            <input
+              type="text"
+              name="giaban"
+              required
+              oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Số lượng tồn kho <span>*</span></label>
+            <input
+              type="text"
+              name="sl_tonkho"
+              required
+              oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Thể Loại<span>*</span></label>
+            <select name="matheloai" required>
+              <option value="">-- Chọn thể loại --</option>
+              <%for (let i = 0 ;i < theloai.length; i++){ %>
+              <option value="<%=theloai[i].matheloai%>">
+                <%=theloai[i].tentheloai%>
+              </option>
+              <% }%>
+            </select>
+          </div>
+
+          <div class="form-group full">
+            <label>Mô tả</label>
+            <textarea rows="5" name="mota"></textarea>
+          </div>
+
+          <!-- IMAGE + PREVIEW -->
+          <div class="form-group full">
+            <label>Ảnh bìa sách <span>*</span>(Bắt buộc)</label>
+
+            <label class="upload-btn">
+              <i class="fa-solid fa-upload"></i> Chọn ảnh
+              <input
+                type="file"
+                accept="image/*"
+                name="hinhanh"
+                id="hinhanh"
+                required
+              />
+            </label>
+
+            <div id="preview-box">
+              <img id="preview-img" alt="Preview" />
+            </div>
+          </div>
+        </div>
+
+        <!-- BUTTON -->
+        <div class="button-group">
+          <button type="submit" class="btn-primary">
+            <i class="fa-solid fa-save"></i> Lưu Sách
+          </button>
+
+          <a href="/admin/quanlysach" class="btn-secondary">
+            <i class="fa-solid fa-xmark"></i> Hủy bỏ
+          </a>
+        </div>
+      </form>
+    </div>
+
+    <!-- PREVIEW SCRIPT -->
+    <script>
+      const inputImage = document.getElementById("hinhanh");
+      const previewBox = document.getElementById("preview-box");
+      const previewImg = document.getElementById("preview-img");
+
+      inputImage.addEventListener("change", function () {
+        const file = this.files[0];
+        if (file) {
+          const imgURL = URL.createObjectURL(file);
+          previewImg.src = imgURL;
+          previewBox.style.display = "block";
+        } else {
+          previewBox.style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>

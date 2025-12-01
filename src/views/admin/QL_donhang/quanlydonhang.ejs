@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản Lý Đơn Hàng - BlueBook</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/admin/css/QL_donhang/quanlydonhang.css" />
+  </head>
+
+  <body>
+    <header class="admin-header">
+      <a href="/admin/home" class="logo">
+        <i class="fa-solid fa-book-open"></i>
+        <span>Blue</span>Book
+      </a>
+    </header>
+
+    <!-- BACK -->
+    <a class="back-link" href="/admin/home">
+      <i class="fa-solid fa-arrow-left"></i> Quay về trang chủ
+    </a>
+
+    <!-- TITLE -->
+    <h1 class="page-title">Quản Lý Đơn Hàng</h1>
+
+    <!-- TABLE WRAPPER -->
+    <div class="order-container">
+      <table class="order-table">
+        <thead>
+          <tr>
+            <th>Mã ĐH</th>
+            <th>Ngày đặt</th>
+            <th>Tên Tài Khoản</th>
+            <th>Tổng Tiền</th>
+            <th>Trạng thái</th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <%for (let i = 0; i < DS_donhang.length; i++){ %>
+          <tr>
+            <td><%=DS_donhang[i].madonhang%></td>
+            <td>
+              <%= new Date(DS_donhang[i].ngaymua).toLocaleDateString("vi-VN") %>
+            </td>
+            <td><%=DS_donhang[i].taikhoan%></td>
+            <td><%=DS_donhang[i].tongtien%></td>
+            <td>
+              <span class="status status-new"
+                ><%=DS_donhang[i].trangthai%></span
+              >
+            </td>
+
+            <td class="action-cell">
+              <form
+                class="status-form"
+                method="post"
+                action="/admin/quanlydonhang/capnhattrangthai/<%=DS_donhang[i].madonhang%>"
+              >
+                <select name="trangthai">
+                  <option value="MOI">Mới</option>
+                  <option value="HOAN_THANH">Hoàn thành</option>
+                  <option value="HUY">Hủy</option>
+                </select>
+
+                <button type="submit" title="Lưu trạng thái">
+                  <i class="fa-solid fa-check"></i>
+                </button>
+              </form>
+
+              <a
+                href="/admin/quanlydonhang/chitietdonhang/<%=DS_donhang[i].madonhang%>"
+                class="btn-view"
+                title="Xem chi tiết"
+              >
+                <i class="fa-solid fa-eye"></i>
+              </a>
+
+              <a href="#" class="btn-delete" title="Xóa đơn">
+                <i class="fa-solid fa-trash"></i>
+              </a>
+            </td>
+          </tr>
+          <% }%>
+        </tbody>
+      </table>
+
+      <p id="no-orders-message" class="no-orders" style="display: none">
+        Không có đơn hàng nào
+      </p>
+    </div>
+  </body>
+</html>
