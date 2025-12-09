@@ -2,127 +2,357 @@
 <html lang="vi">
   <head>
     <meta charset="UTF-8" />
-    <title>Trang chủ | QLYSach</title>
-    <style>
-      body {
-        margin: 0;
-        font-family: Arial;
-        background: #f5f5f5;
-      }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BlueBook - Trang chủ</title>
 
-      header {
-        background: #2a7ae4;
-        padding: 15px 30px;
-        color: white;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      nav a {
-        color: white;
-        margin-left: 20px;
-        text-decoration: none;
-        font-weight: bold;
-      }
-
-      .auth a {
-        margin-left: 15px;
-        padding: 6px 12px;
-        background: white;
-        color: #2a7ae4;
-        border-radius: 4px;
-        text-decoration: none;
-      }
-
-      h2 {
-        padding-left: 30px;
-      }
-
-      .book-list {
-        padding: 30px;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
-      }
-
-      .book {
-        background: white;
-        padding: 15px;
-        border-radius: 8px;
-        box-shadow: 0 0 5px #ccc;
-      }
-
-      .book h3 {
-        margin: 5px 0;
-      }
-      .book p {
-        margin: 0;
-        color: #555;
-      }
-
-      .btn {
-        display: inline-block;
-        margin-top: 10px;
-        padding: 6px 12px;
-        background: #2a7ae4;
-        color: white;
-        text-decoration: none;
-        border-radius: 4px;
-      }
-    </style>
+    <!-- FONT & ICON -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/users/css/home.css" />
   </head>
   <body>
+    <!-- HEADER GIỮ NGUYÊN -->
     <header>
-      <h2>📚 QLYSach</h2>
+      <a href="/" class="logo">BlueBook</a>
 
-      <nav>
-        <a href="/home">Trang chủ</a>
-        <a href="#">Lịch sử đơn</a>
-        <a href="#">Giỏ hàng</a>
+      <nav class="navbar">
+        <a href="#home">Trang Chủ</a>
+        <a href="#theloai">Giới Thiệu</a>
+        <a href="#sachmoi">Sản Phẩm</a>
+        <a href="#footer">Liên Hệ</a>
       </nav>
 
-      <div class="auth">
+      <div class="icons">
+        <i class="fas fa-bars" id="menu-bars"></i>
+        <a href="#timkiem" class="fas fa-search" title="Tìm kiếm"></a>
+        <a href="/cart" class="fas fa-shopping-cart" title="Giỏ hàng"></a>
+        <a href="/yeu-thich" class="fas fa-heart" title="Yêu thích"></a>
+
         <% if (users) { %>
-        <h1>Xin chào <%= users.hoten %></h1>
-        <h2><a href="/logout">Dang xuat</a></h2>
+        <!-- Đã đăng nhập -->
+        <a href="/profile" class="fas fa-user" title="Trang cá nhân"></a>
+        <a
+          href="/logout"
+          class="fas fa-right-from-bracket"
+          title="Đăng xuất"
+        ></a>
         <% } else { %>
-        <a href="/login">Đăng nhập</a>
-        <a href="/register">Đăng ký</a>
+        <!-- Chưa đăng nhập -->
+        <a href="/login" class="fas fa-user-lock" title="Đăng nhập"></a>
+        <a href="/register" class="fas fa-user-plus" title="Đăng ký"></a>
         <% } %>
       </div>
     </header>
 
-    <h2>Danh sách sách</h2>
+    <!-- SLIDER CÂY CAM NGỌT CỦA TÔI (GIỮ NGUYÊN) -->
+    <section class="home" id="home">
+      <div class="home-slider">
+        <div class="swiper-wrapper wrapper">
+          <div class="swiper-slide slide">
+            <div class="content">
+              <span>Sản Phẩm Đặc Biệt Của Chúng Tôi</span>
+              <h3>Cây cam ngọt của tôi</h3>
+              <p>
+                Với một đứa trẻ, thế giới không giới hạn trong một bữa ăn, mà
+                thế giới cần có hào quang của tình thương. Bạn có bao giờ cảm
+                thấy bị lạc lõng trong chính ngôi nhà của mình? Một câu chuyện
+                chạm đến tận cùng cảm xúc.
+              </p>
+            </div>
+            <div class="image">
+              <img src="/users/img/hot1_2.png" alt="caycamngotcuatoi" />
+            </div>
+          </div>
 
-    <div class="book-list">
-      <div class="book">
-        <h3>Doraemon tập 1</h3>
-        <p>Tác giả: Fujiko</p>
-        <p>Giá: 20.000 đ</p>
-        <a class="btn" href="#">Xem chi tiết</a>
+          <div class="swiper-slide slide">
+            <div class="content">
+              <span>Sản Phẩm Đặc Biệt Của Chúng Tôi</span>
+              <h3>Mưa Đỏ</h3>
+              <p>
+                Trong mùa phim "Mưa Đỏ" tạo cơn sốt mạnh mẽ, không chịu đứng
+                ngoài dòng chảy cảm xúc ấy, bản sách Mưa Đỏ – phiên bản cao cấp
+                bìa cứng, hộp đựng đẹp mắt, in ruột giấy 100 gsm được tái bản
+                như một món quà tinh thần dành cho những ai đã, đang và sẽ tiếp
+                cận câu chuyện lịch sử bi hùng này.
+              </p>
+            </div>
+            <div class="image">
+              <img src="/users/img/hot2.png" alt="muado" />
+            </div>
+          </div>
+
+          <div class="swiper-slide slide">
+            <div class="content">
+              <span>Sản Phẩm Đặc Biệt Của Chúng Tôi</span>
+              <h3>Đắc nhân tâm - Tái bản 2021</h3>
+              <p>
+                Đắc nhân tâm của Dale Carnegie là quyển sách của mọi thời đại và
+                một hiện tượng đáng kinh ngạc trong ngành xuất bản Hoa Kỳ. Trong
+                suốt nhiều thập kỷ tiếp theo và cho đến tận bây giờ, tác phẩm
+                này vẫn chiếm vị trí số một trong danh mục sách bán chạy nhất và
+                trở thành một sự kiện có một không hai trong lịch sử ngành xuất
+                bản thế giới và được đánh giá là một quyển sách có tầm ảnh hưởng
+                nhất mọi thời đại.
+              </p>
+            </div>
+            <div class="image">
+              <img src="/users/img/hot3.png" alt="dacnhantam" />
+            </div>
+          </div>
+        </div>
+
+        <div class="swiper-pagination">
+          <span
+            class="swiper-pagination-bullet swiper-pagination-bullet-active"
+          ></span>
+          <span class="swiper-pagination-bullet"></span>
+          <span class="swiper-pagination-bullet"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- TÌM KIẾM (ĐƯA XUỐNG DƯỚI NHƯ M BẢO) -->
+    <section class="search-section" id="timkiem">
+      <div class="search-box-wrapper">
+        <h2 class="search-title">Kho sách khổng lồ cho người yêu đọc</h2>
+        <p class="search-desc">
+          Mua sách online nhanh chóng, nhiều ưu đãi, giao hàng toàn quốc. Khám
+          phá những cuốn sách hay nhất được chọn lọc bởi BlueBook.
+        </p>
+
+        <form class="search-bar-main" onsubmit="handleSearch(event)">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Tìm tên sách, tác giả, thể loại..."
+          />
+          <button type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i> Tìm kiếm
+          </button>
+        </form>
+
+        <div class="search-suggest">
+          <span>Gợi ý:</span>
+          <a href="#">Tiểu thuyết</a>
+          <a href="#">Kinh doanh</a>
+          <a href="#">Thiếu nhi</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- THỂ LOẠI NỔI BẬT -->
+    <section class="section" id="theloai">
+      <div class="section-header">
+        <h2 class="section-title">Thể loại nổi bật</h2>
+        <a href="#" class="link-more">Xem tất cả</a>
       </div>
 
-      <div class="book">
-        <h3>One Piece</h3>
-        <p>Tác giả: Oda</p>
-        <p>Giá: 35.000 đ</p>
-        <a class="btn" href="#">Xem chi tiết</a>
+      <div class="category-grid">
+        <div class="category-card">
+          <div class="category-card-icon">
+            <i class="fa-solid fa-feather"></i>
+          </div>
+          <div class="category-card-title">Văn học</div>
+          <div class="category-card-desc">Tiểu thuyết, truyện ngắn, thơ...</div>
+        </div>
+
+        <div class="category-card">
+          <div class="category-card-icon">
+            <i class="fa-solid fa-briefcase"></i>
+          </div>
+          <div class="category-card-title">Kinh doanh</div>
+          <div class="category-card-desc">Khởi nghiệp, quản trị, đầu tư.</div>
+        </div>
+
+        <div class="category-card">
+          <div class="category-card-icon">
+            <i class="fa-solid fa-user-graduate"></i>
+          </div>
+          <div class="category-card-title">Kỹ năng sống</div>
+          <div class="category-card-desc">Phát triển bản thân, tư duy.</div>
+        </div>
+
+        <div class="category-card">
+          <div class="category-card-icon">
+            <i class="fa-solid fa-children"></i>
+          </div>
+          <div class="category-card-title">Thiếu nhi</div>
+          <div class="category-card-desc">Truyện tranh, truyện cổ tích.</div>
+        </div>
+
+        <div class="category-card">
+          <div class="category-card-icon">
+            <i class="fa-solid fa-flask"></i>
+          </div>
+          <div class="category-card-title">Khoa học - Công nghệ</div>
+          <div class="category-card-desc">IT, AI, khoa học thường thức.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SÁCH MỚI PHÁT HÀNH (5 Ô) -->
+    <section class="section section-gray" id="sachmoi">
+      <div class="section-header">
+        <h2 class="section-title">Sách mới phát hành</h2>
+        <a href="#" class="link-more">Xem thêm</a>
+      </div>
+      <div class="book-grid">
+        <%for(let i = 0 ;i < top6sachmoi.length;i++){ %>
+        <div class="book-card">
+          <div class="book-cover">
+            <img src="/uploads/<%= top6sachmoi[i].hinhanh %>" alt="" />
+          </div>
+          <div class="book-title"><%=top6sachmoi[i].tensach%></div>
+          <div class="book-author"><%=top6sachmoi[i].tentacgia%></div>
+          <div class="book-price">
+            <span class="book-price-old"
+              ><%=Number(top6sachmoi[i].giaban).toLocaleString("vi-VN")%>đ</span
+            >
+          </div>
+          <div class="book-meta">
+            <%=top6sachmoi[i].ngaytao_sach.toLocaleDateString("vi-VN")%>
+          </div>
+          <button
+            class="btn-add-cart"
+            onclick="addToCart('Giả lập sách mới A')"
+          >
+            <i class="fa-solid fa-cart-plus"></i> Thêm vào giỏ
+          </button>
+        </div>
+        <% }%>
+      </div>
+    </section>
+    <!-- SÁCH BÁN CHẠY -->
+    <section class="section" id="banchay">
+      <div class="section-header">
+        <h2 class="section-title">Sách bán chạy</h2>
+        <a href="#" class="link-more">Xem thêm</a>
       </div>
 
-      <div class="book">
-        <h3>Nhà Giả Kim</h3>
-        <p>Tác giả: Paulo Coelho</p>
-        <p>Giá: 90.000 đ</p>
-        <a class="btn" href="#">Xem chi tiết</a>
+      <div class="book-grid">
+        <% for (let i = 0; i < top6sachbanchay.length; i++) { %>
+        <div class="book-card">
+          <span class="badge">Bán chạy</span>
+
+          <div class="book-cover">
+            <img src="/uploads/<%= top6sachbanchay[i].hinhanh %>" alt="" />
+          </div>
+
+          <div class="book-title"><%= top6sachbanchay[i].tensach %></div>
+          <div class="book-author"><%= top6sachbanchay[i].tentacgia %></div>
+          <div class="book-price">
+            <%= Number(top6sachbanchay[i].giaban).toLocaleString("vi-VN") %>đ
+          </div>
+          <div class="book-meta">Đã bán: <%= top6sachbanchay[i].sl %></div>
+
+          <button class="btn-add-cart">
+            <i class="fa-solid fa-cart-plus"></i> Thêm vào giỏ
+          </button>
+        </div>
+        <% } %>
+      </div>
+    </section>
+
+    <!-- FOOTER CŨ -->
+    <section class="footer" id="footer">
+      <div class="box-container">
+        <div class="box">
+          <h3>Các cơ sở</h3>
+          <a href="#">484 Lạch Tray, Đổng Quốc Bình, Lê Chân, Hải Phòng</a>
+          <a href="#">Kiến An, Hải Phòng</a>
+          <a href="#">Nghi Lộc, Nghệ An</a>
+        </div>
+
+        <div class="box">
+          <h3>Các mục</h3>
+          <a href="#home">Trang chủ</a>
+          <a href="#theloai">Giới thiệu</a>
+          <a href="#sachmoi">Sản phẩm</a>
+          <a href="#footer">Liên hệ</a>
+        </div>
+
+        <div class="box">
+          <h3>Thông tin liên lạc</h3>
+          <a href="#">+911379883</a>
+          <a href="#">+358624259</a>
+          <a href="#">bluebook@gmail.com</a>
+        </div>
+
+        <div class="box">
+          <h3>Theo dõi chúng tôi</h3>
+          <a href="#"><i class="fab fa-facebook-f"></i> Facebook</a>
+          <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+        </div>
       </div>
 
-      <div class="book">
-        <h3>Đắc Nhân Tâm</h3>
-        <p>Tác giả: Dale Carnegie</p>
-        <p>Giá: 70.000 đ</p>
-        <a class="btn" href="#">Xem chi tiết</a>
+      <div class="credit">
+        © <span>BlueBook</span> 2025 - All rights reserved.
       </div>
-    </div>
+    </section>
+
+    <!-- JS -->
+    <script>
+      // menu mobile
+      const menu = document.querySelector("#menu-bars");
+      const navbar = document.querySelector(".navbar");
+      if (menu) {
+        menu.onclick = () => {
+          menu.classList.toggle("fa-times");
+          navbar.classList.toggle("active");
+        };
+      }
+
+      // slider "lướt lướt"
+      const slides = document.querySelectorAll(".home-slider .slide");
+      const bullets = document.querySelectorAll(".swiper-pagination-bullet");
+      let currentSlide = 0;
+
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.style.display = i === index ? "flex" : "none";
+        });
+        bullets.forEach((b, i) => {
+          b.classList.toggle("swiper-pagination-bullet-active", i === index);
+        });
+        currentSlide = index;
+      }
+
+      function nextSlide() {
+        let next = currentSlide + 1;
+        if (next >= slides.length) next = 0;
+        showSlide(next);
+      }
+
+      if (slides.length > 0) {
+        showSlide(0);
+        setInterval(nextSlide, 5000);
+      }
+
+      bullets.forEach((b, i) => {
+        b.onclick = () => showSlide(i);
+      });
+
+      // search
+      function handleSearch(e) {
+        e.preventDefault();
+        const kw = document.getElementById("searchInput").value.trim();
+        if (!kw) {
+          alert("Nhập từ khóa cần tìm đã!");
+          return;
+        }
+        alert("Tìm kiếm: " + kw + " (demo)");
+      }
+
+      // cart demo
+      function addToCart(name) {
+        alert("Đã thêm '" + name + "' vào giỏ (demo)");
+      }
+    </script>
   </body>
 </html>

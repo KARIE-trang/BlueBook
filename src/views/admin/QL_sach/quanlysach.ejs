@@ -3,277 +3,182 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quản lý Sách - BlueBook</title>
+    <title>Quản Lý Sách - BlueBook</title>
 
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&display=swap"
-      rel="stylesheet"
-    />
-
+    <!-- CSS chung -->
+    <link rel="stylesheet" href="/admin/css/home.css" />
     <link rel="stylesheet" href="/admin/css/QL_sach/quanlysach.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
-    <!-- HEADER -->
-    <header class="header">
-      <a href="/admin/home" class="logo">
-        <i class="fa-solid fa-book-open"></i>
-        <span>Blue Book</span>
-      </a>
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="logo-text">BlueBook</span>
+      </div>
+
+      <div class="logo-divider"></div>
+
+      <nav class="menu">
+        <a href="/admin/home" class="menu-item">
+          <i class="fa-solid fa-chart-line"></i> Dashboard
+        </a>
+
+        <div class="menu-group">
+          <button class="menu-item dropdown-btn active">
+            <div class="menu-left">
+              <i class="fa-solid fa-book"></i>
+              <span>Sách</span>
+            </div>
+            <i class="fa-solid fa-chevron-down arrow rotate"></i>
+          </button>
+
+          <div class="dropdown show">
+            <a href="/admin/quanlysach" class="menu-sub active"
+              ><i class="fa-solid fa-list"></i> Danh sách sách</a
+            >
+            <a href="/admin/theloai" class="menu-sub"
+              ><i class="fa-solid fa-shapes"></i> Thể loại</a
+            >
+            <a href="/admin/thongke-tonkho" class="menu-sub"
+              ><i class="fa-solid fa-chart-column"></i> Thống kê tồn kho</a
+            >
+          </div>
+        </div>
+
+        <a href="/quanlykhachhang" class="menu-item">
+          <i class="fa-solid fa-users"></i> Khách hàng
+        </a>
+
+        <a href="/admin/quanlydonhang" class="menu-item">
+          <i class="fa-solid fa-file-invoice"></i> Đơn hàng
+        </a>
+
+        <a href="/admin/doanhthu?preset=today" class="menu-item">
+          <i class="fa-solid fa-coins"></i> Doanh thu
+        </a>
+
+        <a href="/logout" class="menu-item logout">
+          <i class="fa-solid fa-right-from-bracket"></i> Đăng xuất
+        </a>
+      </nav>
+    </aside>
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" placeholder="Tìm kiếm..." />
+      </div>
+
+      <div class="top-right">
+        <div class="user-box">
+          <i class="fa-solid fa-user"></i>
+          <span class="user-name">Admin</span>
+          <span class="role">Quản trị viên</span>
+        </div>
+      </div>
     </header>
 
-    <!-- BACK -->
-    <div class="container-content">
-      <a href="/admin/home" class="back-link">
-        <i class="fa-solid fa-arrow-left"></i> Quay về Trang Chủ
-      </a>
+    <!-- MAIN -->
+    <main class="main">
+      <div class="page-header">
+        <h1 class="title">QUẢN LÝ SÁCH</h1>
+        <p class="subtitle">Danh sách toàn bộ sách trong hệ thống BlueBook</p>
 
-      <!-- TITLE -->
-      <h1 class="page-title">QUẢN LÝ SÁCH</h1>
-      <h2 class="page-subtitle">Danh sách Sách</h2>
+        <div class="btn-right">
+          <a href="/admin/add_book" class="add-btn">
+            <i class="fa-solid fa-plus"></i> Thêm Sách Mới
+          </a>
+        </div>
+      </div>
 
-      <!-- ADD BOOK -->
-      <a href="/admin/add_book" class="add-btn">
-        <i class="fa-solid fa-plus"></i> Thêm Sách Mới
-      </a>
-
-      <!-- BOOK TABLE -->
-      <div class="table-wrapper">
-        <table>
+      <div class="table-card">
+        <table class="book-table">
           <thead>
             <tr>
               <th>Ảnh</th>
-              <th>Mã Sách</th>
+              <th>Mã</th>
               <th>Tên Sách</th>
               <th>Tác Giả</th>
               <th>Thể Loại</th>
-              <th>Giá (VNĐ)</th>
-              <th>Tồn kho</th>
-              <th>Hành động</th>
+              <th>Giá</th>
+              <th>Tồn Kho</th>
+              <th>Hành Động</th>
             </tr>
           </thead>
+
           <tbody>
-            <% for (let i = 0; i < sach.length; i++){ %>
-            <tr class="book-row <%= i >= 4 ? 'hidden-row' : '' %>">
-              <td>
-                <img src="/uploads/<%= sach[i].hinhanh %>" class="img-thumb" />
-              </td>
-              <td><%= sach[i].masach %></td>
-              <td><%= sach[i].tensach %></td>
-              <td><%= sach[i].tentacgia %></td>
-              <td><%= sach[i].tentheloai %></td>
-              <td><%= sach[i].giaban %></td>
-              <td><%= sach[i].sl_tonkho %></td>
-              <td>
-                <a
-                  href="/admin/edit_book/<%= sach[i].masach %>"
-                  class="action-btn edit"
-                >
-                  <i class="fa-solid fa-pen"></i> Sửa
-                </a>
-
-                <a
-                  href="#"
-                  class="action-btn delete-btn"
-                  data-id="<%= sach[i].masach %>"
-                  data-name="<%= sach[i].tensach %>"
-                >
-                  <i class="fa-solid fa-trash"></i> Xóa
-                </a>
-              </td>
-            </tr>
-            <% } %>
-          </tbody>
-        </table>
-
-        <div class="load-more-container">
-          <button id="toggle-books" class="add-btn" style="margin-top: 15px">
-            Xem thêm ▼
-          </button>
-        </div>
-      </div>
-
-      <!-- THỂ LOẠI -->
-      <h1 class="page-title">THỂ LOẠI</h1>
-
-      <a href="/admin/add_theloai" class="add-btn">
-        <i class="fa-solid fa-plus"></i> Thêm Thể Loại Mới
-      </a>
-
-      <div class="table-wrapper">
-        <table>
-          <thead>
+            <% sach.forEach((s) => { %>
             <tr>
-              <th>Mã TL</th>
-              <th>Tên Thể loại</th>
-              <th>Số lượng sách</th>
-              <th>Hành động</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% for(let i = 0 ; i < theloai.length; i++){ %>
-            <tr>
-              <td><%=theloai[i].matheloai%></td>
-              <td><%=theloai[i].tentheloai%></td>
-              <td><%=theloai[i].soluongsach%></td>
+              <td><img src="/uploads/<%= s.hinhanh %>" class="img-thumb" /></td>
+
+              <td><%= s.masach %></td>
+
+              <td class="ten-sach"><%= s.tensach %></td>
+
+              <td><%= s.tentacgia %></td>
+
+              <td><%= s.tentheloai %></td>
+
+              <td class="gia"><%= s.giaban.toLocaleString("vi-VN") %>đ</td>
+
+              <td><%= s.sl_tonkho %></td>
+
               <td>
-                <a
-                  href="/admin/edit_theloai/<%=theloai[i].matheloai%>"
-                  class="action-btn edit"
-                >
-                  <i class="fa-solid fa-pen"></i> Sửa
-                </a>
-                <a
-                  href="/admin/delete_theloai/<%=theloai[i].matheloai%>"
-                  class="action-btn delete-btn"
-                  data-id="<%= theloai[i].matheloai %>"
-                  data-name="<%= theloai[i].tentheloai %>"
-                >
-                  <i class="fa-solid fa-trash"></i> Xóa
-                </a>
+                <div class="action-col">
+                  <!-- Sửa -->
+                  <a
+                    href="/admin/edit_book/<%= s.masach %>"
+                    class="action-btn edit"
+                  >
+                    <i class="fa-solid fa-pen"></i>
+                  </a>
+
+                  <!-- HIỂN / ẨN -->
+                  <% if (s.trangthai_sach.trim() === "HIEN") { %>
+                  <!-- Sách đang HIỂN → icon MẮT MỞ → action là HIDE -->
+                  <a
+                    href="/admin/hide_book/<%= s.masach %>"
+                    class="action-btn hide"
+                  >
+                    <i class="fa-solid fa-eye"></i>
+                  </a>
+                  <% } else { %>
+                  <!-- Sách đang ẨN → icon MẮT GẠCH → action là SHOW -->
+                  <a
+                    href="/admin/show_book/<%= s.masach %>"
+                    class="action-btn show"
+                  >
+                    <i class="fa-solid fa-eye-slash"></i>
+                  </a>
+                  <% } %>
+                </div>
               </td>
             </tr>
-            <% }%>
+            <% }) %>
           </tbody>
         </table>
       </div>
+    </main>
 
-      <!-- TỒN KHO -->
-      <h1 class="page-title">THỐNG KÊ TỒN KHO</h1>
-
-<div class="stats-grid">
-
-  <div class="stat-card">
-    <div class="stat-part stat-top">
-      <h3 class="stat-title">Tổng số lượng sách</h3>
-    </div>
-    <div class="stat-part stat-middle">
-      <span class="stat-value"><%= tongsach.soluong %></span>
-    </div>
-    <div class="stat-part stat-bottom">
-      <p class="stat-desc">Tất cả mã sách</p>
-    </div>
-  </div>
-
-  <div class="stat-card">
-    <div class="stat-part stat-top">
-      <h3 class="stat-title">Sách tồn thấp nhất</h3>
-    </div>
-    <div class="stat-part stat-middle">
-      <span class="stat-value">
-        <%= sachtonitnhat.tensach %> - <%= sachtonitnhat.sl_tonkho %>
-      </span>
-    </div>
-    <div class="stat-part stat-bottom">
-      <p class="stat-desc">Cần nhập thêm</p>
-    </div>
-  </div>
-
-  <div class="stat-card">
-    <div class="stat-part stat-top">
-      <h3 class="stat-title">Sách tồn nhiều nhất</h3>
-    </div>
-    <div class="stat-part stat-middle">
-      <span class="stat-value">
-        <%= sachtonnhieunhat.tensach %> - <%= sachtonnhieunhat.sl_tonkho %>
-      </span>
-    </div>
-    <div class="stat-part stat-bottom">
-      <p class="stat-desc">Có thể giảm giá</p>
-    </div>
-  </div>
-
-  <div class="stat-card">
-    <div class="stat-part stat-top">
-      <h3 class="stat-title">Thể loại có nhiều sách nhất</h3>
-    </div>
-    <div class="stat-part stat-middle">
-      <span class="stat-value stat-value-small">
-        <%= theloainhieusach.tentheloai %>
-      </span>
-    </div>
-    <div class="stat-part stat-bottom">
-      <p class="stat-desc">Quan trọng cần theo dõi</p>
-    </div>
-  </div>
-
-</div>
-
-
-    <!-- DELETE CONFIRM MODAL -->
-    <div id="delete-modal" class="modal">
-      <div class="modal-content">
-        <h2>Xác nhận xóa</h2>
-        <p id="delete-message"></p>
-
-        <div class="modal-buttons">
-          <button id="confirm-delete" class="confirm-btn">Xóa</button>
-          <button id="cancel-delete" class="cancel-btn">Hủy</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- SCRIPT -->
     <script>
-      /* NÚT XEM THÊM SÁCH */
-      const btn = document.getElementById("toggle-books");
-      const hiddenRows = document.querySelectorAll(".hidden-row");
-      let expanded = false;
+      const btn = document.querySelector(".dropdown-btn");
+      const drop = document.querySelector(".dropdown");
+      const arrow = document.querySelector(".arrow");
 
-      btn?.addEventListener("click", () => {
-        expanded = !expanded;
-        hiddenRows.forEach((row) => {
-          row.style.display = expanded ? "table-row" : "none";
-        });
-        btn.textContent = expanded ? "Thu gọn ▲" : "Xem thêm ▼";
-      });
-
-      /* MODAL XÓA CHUNG */
-      const deleteButtons = document.querySelectorAll(".delete-btn");
-      const modal = document.getElementById("delete-modal");
-      const msg = document.getElementById("delete-message");
-      const confirmBtn = document.getElementById("confirm-delete");
-      const cancelBtn = document.getElementById("cancel-delete");
-      let deleteUrl = "";
-
-      deleteButtons.forEach((btn) => {
-        btn.addEventListener("click", function (e) {
-          e.preventDefault();
-
-          const id = this.dataset.id;
-          const name = this.dataset.name;
-
-          const isBook = this.closest("table")
-            .querySelector("thead th")
-            .innerText.trim()
-            .includes("Ảnh");
-
-          if (isBook) {
-            msg.innerHTML = `Bạn có chắc chắn muốn xóa <b>sách ${name}</b> (Mã ${id})?`;
-            deleteUrl = `/admin/delete_book/${id}`;
-          } else {
-            msg.innerHTML = `Bạn có chắc chắn muốn xóa <b>thể loại ${name}</b> (Mã ${id})?`;
-            deleteUrl = `/admin/delete_theloai/${id}`;
-          }
-
-          modal.style.display = "flex";
-        });
-      });
-
-      confirmBtn?.addEventListener("click", () => {
-        window.location.href = deleteUrl;
-      });
-
-      cancelBtn?.addEventListener("click", () => {
-        modal.style.display = "none";
-      });
-
-      modal?.addEventListener("click", (e) => {
-        if (e.target === modal) modal.style.display = "none";
+      btn.addEventListener("click", () => {
+        drop.classList.toggle("show");
+        arrow.classList.toggle("rotate");
       });
     </script>
   </body>

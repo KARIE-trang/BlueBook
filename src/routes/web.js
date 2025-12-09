@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const { requireLogin, requireAdmin } = require("../middleware/auth.js");
 const {
   getHome,
   getDangNhap,

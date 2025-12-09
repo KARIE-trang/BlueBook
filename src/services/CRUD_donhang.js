@@ -1,17 +1,58 @@
 const connection = require("../config/database.js");
 
-const DanhSachDonHang = async () => {
+const DanhSachDonHang = async (trangthai = "", from = null, to = null) => {
   let [kq] = await connection.query(
-    "select donhang.madonhang, ngaymua, taikhoan, sum(soluong * gia)as tongtien , trangthai from donhang join donhang_sach on donhang.madonhang = donhang_sach.madonhang join users on users.user_id = donhang.user_id group by donhang.madonhang, ngaymua, taikhoan,trangthai order by ngaymua desc"
+    `
+    SELECT 
+      donhang.madonhang,
+      donhang.ngaymua,
+      users.taikhoan,
+      donhang.trangthai,
+      SUM(donhang_sach.soluong * donhang_sach.gia) AS tongtien
+    FROM donhang
+    JOIN donhang_sach 
+      ON donhang.madonhang = donhang_sach.madonhang
+    JOIN users 
+      ON users.user_id = donhang.user_id
+    WHERE ( ? = '' OR donhang.trangthai = ? )
+      AND ( ? IS NULL OR DATE(donhang.ngaymua) >= ? )
+      AND ( ? IS NULL OR DATE(donhang.ngaymua) <= ? )
+    GROUP BY donhang.madonhang, donhang.ngaymua, users.taikhoan, donhang.trangthai
+    ORDER BY donhang.ngaymua DESC
+    `,
+    [trangthai, trangthai, from, from, to, to]
   );
+
   return kq;
 };
 
 const CapNhatTrangThai = async (madonhang, trangthai) => {
+  const [kq] = await connection.query(
+    "SELECT trangthai FROM donhang WHERE madonhang = ?",
+    [madonhang]
+  );
+
+  if (!kq.length) return;
+  const trangThaiCu = kq[0].trangthai;
+
   await connection.query(
-    "update donhang set trangthai = ? where madonhang = ?",
+    "UPDATE donhang SET trangthai = ? WHERE madonhang = ?",
     [trangthai, madonhang]
   );
+
+  if (trangthai === "HUY" && trangThaiCu !== "HUY") {
+    const [items] = await connection.query(
+      "SELECT masach, soluong FROM donhang_sach WHERE madonhang = ?",
+      [madonhang]
+    );
+
+    for (let sp of items) {
+      await connection.query(
+        "UPDATE sach SET sl_tonkho = sl_tonkho + ? WHERE masach = ?",
+        [sp.soluong, sp.masach]
+      );
+    }
+  }
 };
 
 const ThongTinDon = async (madonhang) => {
@@ -40,6 +81,7 @@ const ThanhTien = async (madonhang) => {
   );
   return kq[0];
 };
+
 module.exports = {
   DanhSachDonHang,
   CapNhatTrangThai,

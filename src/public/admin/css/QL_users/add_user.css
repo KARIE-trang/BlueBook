@@ -1,201 +1,207 @@
-/* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* ================= GENERAL ================= */
+
+.main {
+  padding: 22px;
   font-family: "Nunito", sans-serif;
+  color: #111827;
 }
 
-body {
-  background: #f5f7fc;
-  color: #1a1e2e;
-}
-
-/* ===== HEADER MINI ===== */
-.header-mini {
+/* Cho cả header + card đều chung max-width và căn giữa */
+.page-header,
+.user-card {
   width: 100%;
-  background: linear-gradient(135deg, #6f89d8, #295abd);
-  padding: 18px 50px;
+  max-width: 900px;
+  margin: 0 auto; /* căn giữa theo chiều ngang */
+}
 
+/* ================= PAGE HEADER ================= */
+
+.page-header {
   display: flex;
-  justify-content: center; /* ⭐ vẫn căn giữa */
-  align-items: center;
-
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
-  cursor: pointer;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 20px;
 }
 
-/* Logo mini (nhỏ hơn admin chính) */
-.logo-mini {
-  font-size: 28px;
-  font-weight: 900;
-  letter-spacing: 0.4px;
-
-  display: flex;
-  align-items: center;
-  gap: 8px;
-
-  color: #ffffff;
-  text-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
+.page-title {
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 4px;
 }
 
-.logo-mini i {
-  font-size: 30px;
-  padding: 6px 8px;
-  background: rgba(255, 255, 255, 0.18);
-  border-radius: 10px;
-}
-a {
-  text-decoration: none;
-}
-/* ===== CONTAINER ===== */
-.container-content {
-  width: 90%;
-  max-width: 650px;
-  margin: 35px auto;
+.page-subtitle {
+  font-size: 14px;
+  color: #6b7280;
 }
 
 .back-link {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: #354fd1;
-  font-weight: 900;
+  background: #e0ecff;
+  color: #2563eb;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
   text-decoration: none;
-  margin-bottom: 20px;
-  margin-left: 60px;
-  transition: 0.2s ease;
+  transition: 0.2s;
 }
 
 .back-link:hover {
-  color: #3a4eff;
-  transform: translateX(-4px);
+  background: #c7dcff;
 }
 
-.page-title {
-  text-align: center;
-  font-size: 26px;
-  font-weight: 800;
-  margin-bottom: 20px;
-  color: #2d2f48;
-  position: relative;
+/* ================= CARD CONTAINER ================= */
+
+.user-card {
+  background: #ffffff;
+  padding: 22px;
+  border-radius: 14px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
 }
 
-.page-title::after {
-  content: "";
-  width: 70px;
-  height: 3px;
-  background: #4d6bff;
-  border-radius: 6px;
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-/* ===== CARD FORM ===== */
-.add-card {
-  max-width: 520px;
-  margin: 0 auto;
-  background: white;
-  border-radius: 22px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12), 0 8px 15px rgba(0, 0, 0, 0.06);
-  border: 1px solid #e7ebff;
-  overflow: hidden;
-  animation: fadeUp 0.4s ease;
-}
-
-.card-header {
-  background: linear-gradient(135deg, #6f89d8, #295abd);
-  color: white;
-  padding: 20px;
-  font-size: 19px;
-  font-weight: 800;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-}
-
-.card-body {
-  padding: 28px 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.form-group label {
+.form-title {
+  font-size: 18px;
   font-weight: 700;
-  margin-bottom: 6px;
+  margin-bottom: 16px;
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
+.form-title i {
+  color: #2563eb;
+}
+
+/* ================= FORM LAYOUT ================= */
+
+.form-add-user {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-group label {
+  font-weight: 600;
+  font-size: 14px;
+  color: #374151;
+}
+
+.required {
+  color: #dc2626;
+}
+
 .form-group input {
-  width: 100%;
-  padding: 12px 15px;
-  border-radius: 12px;
-  border: 1px solid #d4d7e4;
-  background: #f7f8ff;
-  transition: 0.2s ease;
+  padding: 9px 12px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  outline: none;
+  font-size: 14px;
+  transition: 0.15s;
 }
 
 .form-group input:focus {
-  border-color: #4d6bff;
-  box-shadow: 0 0 0 3px rgba(77, 107, 255, 0.25);
-  background: white;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.2);
 }
 
-/* BUTTON */
-.btn-add {
-  width: 100%;
-  border: none;
-  padding: 14px;
-  background: linear-gradient(135deg, #6f89d8, #295abd);
-  color: white;
-  font-size: 17px;
-  font-weight: 800;
-  border-radius: 12px;
-  cursor: pointer;
+.hint {
+  font-size: 12px;
+  color: #9ca3af;
+  margin-top: -2px;
+}
+
+/* ================= ERROR MESSAGE ================= */
+
+.error-msg {
+  background: #fee2e2;
+  color: #b91c1c;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  border-left: 4px solid #dc2626;
+}
+
+/* ================= FORM BUTTONS ================= */
+
+.form-buttons {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-end;
   gap: 10px;
-  transition: 0.25s ease;
+  margin-top: 10px;
 }
 
-.btn-add:hover {
-  background: #3a4eff;
-  transform: translateY(-2px);
+.btn-cancel,
+.btn-submit {
+  padding: 9px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
-/* Animation */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
+/* Huỷ */
+.btn-cancel {
+  background: #e5e7eb;
+  color: #374151;
+  text-decoration: none;
+}
+
+.btn-cancel:hover {
+  background: #d1d5db;
+}
+
+/* Lưu */
+.btn-submit {
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+}
+
+.btn-submit:hover {
+  background: #1d4ed8;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+  .page-header,
+  .user-card {
+    max-width: 100%;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .user-card {
+    padding: 18px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
   }
 }
-.header-mini {
-  position: relative;
-}
 
-.header-mini::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, #ffffff55, #ffffffaa, #ffffff55);
-}
-.error {
-  color: red;
-  text-align: center;
+@media (max-width: 600px) {
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
 }

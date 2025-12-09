@@ -1,64 +1,81 @@
 const connection = require("../config/database.js");
-//login
-const LoginUsers = async (taikhoan) => {
+
+const LoginUsers = async (taikhoan, matkhau) => {
   let [results] = await connection.query(
-    "select * from users where taikhoan = ?",
+    "SELECT * FROM users WHERE taikhoan = ?",
     [taikhoan]
   );
-  return results;
+  if (results.length === 0) {
+    return { status: "NOT_FOUND" };
+  }
+  const user = results[0];
+  if (user.trangthai_user !== "ACTIVE") {
+    return { status: "LOCKED" };
+  }
+  if (user.matkhau !== matkhau) {
+    return { status: "WRONG_PASSWORD" };
+  }
+  return { status: "SUCCESS", user };
 };
 
-// sign up
 const SignUp = async (taikhoan, matkhau, hoten, email) => {
   let [results] = await connection.query(
-    "select * from users where taikhoan = ? or email = ?",
+    "SELECT * FROM users WHERE taikhoan = ? OR email = ?",
     [taikhoan, email]
   );
+
   if (results.length === 0) {
-    let [rows] = await connection.query(
-      "insert into users(taikhoan, matkhau, hoten, email) values (?,?,?,?)",
+    await connection.query(
+      "INSERT INTO users(taikhoan, matkhau, hoten, email) VALUES (?,?,?,?)",
       [taikhoan, matkhau, hoten, email]
     );
     return 1;
-  } else {
-    return 0;
   }
+
+  return 0;
 };
 
 const DanhSachUsers = async () => {
-  let [results] = await connection.query("select * from users");
+  let [results] = await connection.query("SELECT * FROM users");
   return results;
 };
 
-//C
 const getUser = async (user_id) => {
   let [result] = await connection.query(
-    "select * from users where user_id = ?",
+    "SELECT * FROM users WHERE user_id = ?",
     [user_id]
   );
   return result[0];
 };
 
 const EditUser = async (taikhoan, matkhau, hoten, email, user_id) => {
-  let [kiemtrataikhoan] = await connection.query(
-    "select * from users where (taikhoan = ? or email = ?) and user_id != ? ",
+  let [check] = await connection.query(
+    "SELECT * FROM users WHERE (taikhoan = ? OR email = ?) AND user_id != ?",
     [taikhoan, email, user_id]
   );
-  if (kiemtrataikhoan.length > 0) {
+
+  if (check.length > 0) {
     return 0;
-  } else {
-    let [result] = await connection.query(
-      "update users set taikhoan=?, matkhau = ?,hoten = ?, email = ? where user_id = ?",
-      [taikhoan, matkhau, hoten, email, user_id]
-    );
-    return 1;
   }
+
+  await connection.query(
+    "UPDATE users SET taikhoan=?, matkhau=?, hoten=?, email=? WHERE user_id=?",
+    [taikhoan, matkhau, hoten, email, user_id]
+  );
+
+  return 1;
 };
 
-//D
-const DeleteUser = async (user_id) => {
-  let [results] = await connection.query(
-    "delete from users where user_id = ?",
+const BlockUser = async (user_id) => {
+  await connection.query(
+    "UPDATE users SET trangthai_user='BLOCKED' WHERE user_id=?",
+    [user_id]
+  );
+};
+
+const UnlockUser = async (user_id) => {
+  await connection.query(
+    "UPDATE users SET trangthai_user='ACTIVE' WHERE user_id=?",
     [user_id]
   );
 };
@@ -69,5 +86,6 @@ module.exports = {
   DanhSachUsers,
   getUser,
   EditUser,
-  DeleteUser,
+  BlockUser,
+  UnlockUser,
 };

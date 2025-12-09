@@ -1,218 +1,258 @@
-/* RESET */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* ====================== MAIN LAYOUT ====================== */
+.main {
+  padding: 25px 35px;
+  background: #f4f6ff;
+  min-height: 100vh;
   font-family: "Nunito", sans-serif;
 }
 
-body {
-  background: #f6f7fb;
-  color: #1a1e2e;
+.page-title {
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  color: #2b2b2b;
 }
 
-a {
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 15px;
+  color: #4d6bff;
+  font-weight: 600;
   text-decoration: none;
 }
 
-/* HEADER */
-.admin-header {
-  width: 100%;
-  background: linear-gradient(135deg, #6f89d8, #295abd);
-  padding: 18px 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
-  backdrop-filter: blur(4px);
+.back-link:hover {
+  text-decoration: underline;
 }
 
-.logo {
-  font-size: 30px;
-  font-weight: 900;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: #fff;
-}
-
-.logo i {
-  font-size: 30px;
-  padding: 10px;
-  background: rgba(255, 255, 255, 0.18);
-  border-radius: 14px;
-}
-.sdmin-header {
-  position: relative;
-}
-
-.admin-header::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, #ffffff55, #ffffffaa, #ffffff55);
-}
-/* BACK */
-.back-link {
-  width: 90%;
-  max-width: 1100px;
-  margin: 25px 150px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-weight: 900;
-  color: #4d6bff;
-}
-
-/* TITLE */
-.page-title {
-  text-align: center;
-  font-size: 32px;
-  font-weight: 900;
-  margin-bottom: 25px;
-}
-
-.page-title::after {
-  content: "";
-  width: 150px;
-  height: 4px;
-  background: linear-gradient(90deg, #6f89d8, #295abd);
-  display: block;
-  margin: 12px auto 0;
-  border-radius: 4px;
-}
-
-/* LAYOUT */
+/* ====================== LAYOUT 2 CỘT ====================== */
 .detail-layout {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto 40px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 360px auto;
   gap: 25px;
-  align-items: stretch; /* ⭐ GIÚP 2 CARD CAO BẰNG NHAU */
 }
 
-/* LEFT COLUMN */
-.left-column {
-  width: 360px; /* ⭐ GIỮ CHUẨN CHIỀU RỘNG */
-}
-
+/* ====================== LEFT CARD ====================== */
 .left-card {
-  background: white;
-  padding: 20px;
+  background: #fff;
+  padding: 22px;
   border-radius: 16px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-  border: 1px solid #e5e7f2;
-  height: 100%; /* ⭐ CAO BẰNG CARD BÊN PHẢI */
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.07);
+  height: fit-content;
 }
 
 .section-title {
-  text-align: center;
-  font-size: 20px;
-  font-weight: 900;
-  margin-bottom: 14px;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #333;
 }
 
 .info-block p {
-  margin: 10px 0;
+  margin: 8px 0;
   font-size: 15px;
-  font-weight: 600;
 }
 
-/* DIVIDER */
+.info-block strong {
+  color: #444;
+  display: inline-block;
+  width: 120px;
+}
+
+.info-block span {
+  font-weight: 600;
+  color: #222;
+}
+
 .divider {
-  width: 100%;
   height: 1px;
-  background: #e1e3ee;
+  background: #e1e1e1;
   margin: 18px 0;
 }
 
-/* STATUS BADGE */
+/* ====================== STATUS COLORS ====================== */
 .status {
-  padding: 6px 14px;
-  border-radius: 20px;
+  padding: 3px 10px;
+  border-radius: 6px;
   font-size: 13px;
-  font-weight: 800;
+  font-weight: 700;
 }
 
-.status-new {
-  background: #fff6d6;
-  color: #c58a00;
+.status.new {
+  background: #4d6bff22;
+  color: #3b57e3;
 }
 
-/* RIGHT COLUMN */
-.right-column {
-  flex: 1; /* ⭐ Chiếm toàn bộ phần còn lại */
+.status.done {
+  background: #2ecc7122;
+  color: #1e9b52;
 }
 
+.status.cancel {
+  background: #ff6b6b22;
+  color: #d54343;
+}
+
+/* ====================== RIGHT COLUMN ====================== */
 .right-card {
-  background: white;
-  padding: 20px;
+  background: #fff;
+  padding: 22px;
   border-radius: 16px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-  border: 1px solid #e5e7f2;
-  height: 100%; /* ⭐ ĐỂ CAO BẰNG LEFT */
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.07);
 }
 
-.right-title {
-  font-size: 20px;
-  font-weight: 900;
-  margin-bottom: 16px;
+.right-card .section-title {
+  margin-bottom: 18px;
 }
 
-/* PRODUCT ITEM */
+/* ====================== PRODUCT LIST ====================== */
 .product-item {
-  display: flex;
+  display: grid;
+  grid-template-columns: 85px auto 120px;
   align-items: center;
-  gap: 14px;
-  background: #f9faff;
-  border: 1px solid #ececf5;
-  padding: 14px;
-  border-radius: 12px;
-  margin-bottom: 12px;
+  gap: 15px;
+  padding: 14px 0;
+  border-bottom: 1px solid #ededed;
+}
+
+.product-item:last-child {
+  border-bottom: none;
 }
 
 .product-img {
-  width: 70px;
-  height: 90px;
+  width: 82px;
+  height: 105px;
   object-fit: cover;
   border-radius: 8px;
+  border: 1px solid #ddd;
 }
 
 .product-info h3 {
   font-size: 16px;
-  font-weight: 800;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.product-info p {
+  margin: 3px 0;
+  font-size: 14px;
+  color: #555;
 }
 
 .product-total {
-  margin-left: auto;
-  color: #4d6bff;
-  font-weight: 900;
+  font-weight: 800;
+  font-size: 16px;
+  color: #2c2c2c;
+  text-align: right;
 }
 
-/* TOTAL BOX */
+/* ====================== TOTAL BOX ====================== */
 .total-box {
-  border-top: 1px solid #e2e2f3;
-  margin-top: 20px;
-  padding-top: 16px;
+  margin-top: 22px;
+  padding: 18px;
+  background: #f7f9ff;
+  border-radius: 12px;
+  border: 1px solid #e3e8ff;
 }
 
 .total-row {
   display: flex;
   justify-content: space-between;
-  font-weight: 700;
-  margin-bottom: 6px;
+  margin: 8px 0;
+  font-size: 15px;
 }
 
-.final span:last-child {
-  font-size: 20px;
-  color: #4d6bff;
+.total-row.final {
+  font-size: 18px;
+  font-weight: 800;
+  color: #2b2b2b;
+  margin-top: 14px;
 }
 
-.free {
-  color: #00a96e;
+/* ====================== RESPONSIVE ====================== */
+@media (max-width: 900px) {
+  .detail-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .product-item {
+    grid-template-columns: 70px auto 100px;
+  }
+}
+
+@media (max-width: 600px) {
+  .product-item {
+    grid-template-columns: 60px auto;
+  }
+
+  .product-total {
+    margin-top: 5px;
+    text-align: left;
+  }
+
+  .total-row {
+    font-size: 14px;
+  }
+}
+/* ================= FIX khoảng trống & căn bố cục ================ */
+
+/* Giảm padding chung để nội dung nằm cao hơn */
+.main {
+  padding-top: 20px;
+}
+
+/* Nút quay lại đẹp + rõ + sát nội dung */
+.back-link {
+  font-size: 15px;
+  margin-bottom: 5px;
+  opacity: 0.9;
+  transition: 0.2s ease;
+}
+
+.back-link:hover {
+  opacity: 1;
+  transform: translateX(-3px);
+}
+
+/* Layout 2 cột: giảm gap để đỡ trống */
+.detail-layout {
+  grid-template-columns: 330px auto;
+  gap: 18px;
+}
+
+/* Card phải nhỏ lại một chút để cân đối */
+.right-card {
+  padding: 20px 25px;
+}
+
+/* Nền trang mềm hơn bớt trống */
+.main {
+  background: linear-gradient(to bottom, #eef2ff 0%, #f7f8ff 80%);
+}
+
+/* Tổng tiền box đẩy lên gần hơn */
+.total-box {
+  margin-top: 15px;
+}
+.page-subtitle {
+  margin-top: -10px;
+  margin-bottom: 20px;
+  font-size: 15px;
+  color: #666;
+  opacity: 0.9;
+}
+.detail-layout {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* hoặc 330px auto tùy m */
+  gap: 25px;
+  align-items: stretch; /* 🟢 ép 2 cột có chiều cao bằng nhau */
+}
+
+.left-card,
+.right-card {
+  height: 100%; /* 🟢 full chiều cao của ô grid */
+  display: flex;
+  flex-direction: column;
 }

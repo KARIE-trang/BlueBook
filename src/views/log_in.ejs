@@ -411,12 +411,13 @@
             <input type="email" name="email" placeholder="Email" required />
           </div>
           <div class="login-error">
-            <% if(error == 2){ %>
-            <p>Mật khẩu không khớp</p>
-            <% } else if(error == 1){ %>
+            <% if(registerError === "USER_EXISTS"){ %>
             <p>Tài khoản hoặc email đã tồn tại</p>
+            <% } else if(registerError === "PASSWORD_NOT_MATCH"){ %>
+            <p>Mật khẩu nhập lại không trùng khớp</p>
             <% } %>
           </div>
+
           <button type="submit">Đăng ký</button>
         </form>
       </div>
@@ -449,8 +450,11 @@
             ></i>
           </div>
           <div class="login-error">
-            <% if(error==3){ %>
-            <p>Tài khoản hoặc mật khẩu sai!</p>
+            <% if(loginError === "NOT_FOUND" || loginError ===
+            "WRONG_PASSWORD"){ %>
+            <p>Tài khoản hoặc mật khẩu không đúng</p>
+            <% } else if(loginError === "LOCKED"){ %>
+            <p>Tài khoản đã bị khóa</p>
             <% } %>
           </div>
 

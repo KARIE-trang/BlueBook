@@ -1,4 +1,4 @@
-/* RESET */
+/* ================= RESET CSS ================= */
 * {
   margin: 0;
   padding: 0;
@@ -6,227 +6,259 @@
   font-family: "Nunito", sans-serif;
 }
 
-body {
-  background: #f5f7fc;
-  color: #1a1e2e;
-  animation: fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* HEADER */
-.admin-header {
-  width: 100%;
-  background: linear-gradient(
-    135deg,
-    #6f89d8,
-    #295abd
-  ); /* ⭐ chỉnh lại cho logo trắng nổi */
-  padding: 18px 50px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #fff;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-  cursor: pointer;
-}
 a {
-  text-decoration: none;
+  text-decoration: none !important; /* ❗ XÓA GẠCH CHÂN MỌI LINK */
+  color: inherit;
 }
-.logo {
-  font-size: 28px;
+
+body {
+  display: flex;
+  min-height: 100vh;
+  background: #f6f7ff;
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar {
+  width: 240px;
+  background: #ffffff;
+  border-right: 1px solid #e6e7ee;
+  padding: 22px 16px;
+  position: fixed;
+  inset: 0 auto 0 0;
+}
+
+/* LOGO */
+.brand .logo-text {
+  font-size: 26px;
   font-weight: 900;
-  letter-spacing: 0.3px;
+  color: #4d6bff;
+}
+
+.logo-divider {
+  width: 100%;
+  height: 1px;
+  background: #ececf5;
+  margin: 14px 0 20px;
+}
+
+/* MENU ITEM */
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  font-size: 15px;
+  color: #505050;
+  border-radius: 10px;
+  transition: 0.2s;
+  border: 1px solid transparent; /* ❗ Bỏ viền đen */
+}
+
+.menu-item i {
+  font-size: 17px;
+}
+
+.menu-item:hover {
+  background: #eef2ff;
+}
+
+/* ACTIVE */
+.menu-item.active {
+  background: #e4eaff;
+  border-color: #cdd7ff;
+  font-weight: 700;
+  color: #4d6bff;
+}
+
+/* DROPDOWN */
+.dropdown-btn {
+  width: 100%;
+  justify-content: space-between;
+}
+
+.arrow {
+  transition: 0.25s;
+}
+
+.arrow.rotate {
+  transform: rotate(180deg);
+}
+
+.dropdown {
+  display: none;
+  flex-direction: column;
+  margin-left: 35px;
+  margin-top: 5px;
+  gap: 6px;
+}
+
+.dropdown.show {
+  display: flex;
+}
+
+.menu-sub {
   display: flex;
   align-items: center;
   gap: 10px;
-  color: #ffffff; /* trắng sắc nét */
-  text-shadow: 0 0 6px rgba(0, 0, 0, 0.15); /* ⭐ tăng độ nổi */
-}
-
-.logo span {
-  color: #ffffff; /* cho đồng bộ, tránh bị nhợt */
-}
-
-.logo i {
-  font-size: 30px;
-  padding: 10px;
-  background: rgba(255, 255, 255, 0.2); /* nhẹ hơn để icon không bị “cục" */
-  border-radius: 12px;
-}
-
-.btn-logout {
-  background: rgba(255, 255, 255, 0.25);
-  padding: 10px 26px;
-  border-radius: 30px;
-  text-decoration: none;
-  color: white;
-  font-weight: 700;
+  padding: 6px 0;
   font-size: 14px;
-  transition: 0.25s ease;
+  color: #666;
 }
 
-.btn-logout:hover {
+.menu-sub:hover {
+  color: #4d6bff;
+}
+
+/* LOGOUT */
+.menu-item.logout {
+  margin-top: 25px;
+  color: #e85c59;
+}
+
+/* ================= MAIN ================= */
+.main {
+  margin-left: 240px;
+  width: calc(100% - 240px);
+  padding-top: 90px !important;
+}
+
+/* ================= TOPBAR ================= */
+.topbar {
+  height: 70px;
   background: #fff;
-  color: #6f89d8;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-}
-
-/* MAIN WRAPPER */
-.admin-container {
-  width: 90%;
-  max-width: 1180px;
-  margin: 50px auto;
-  text-align: center;
-}
-
-.title {
-  font-size: 38px;
-  font-weight: 900;
-  color: #1a1e2e;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
-}
-
-.subtitle {
-  font-size: 18px;
-  color: #435076;
-  margin-top: 6px;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-  line-height: 1.5;
-  opacity: 0;
-  animation: fadeText 0.6s ease forwards;
-}
-
-@keyframes fadeText {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-    filter: blur(3px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
-  }
-}
-
-.section-title {
-  margin: 20px 0 28px;
-  color: #2f75a6;
-  font-weight: 900;
-  font-size: 20px;
-  letter-spacing: 1px;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-}
-
-/* GRID */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-  gap: 30px;
-  margin-top: 20px;
-}
-
-/* CARD */
-.card {
-  background: white;
-  padding: 22px 26px;
-  border-radius: 20px;
+  padding: 0 24px;
+  border-bottom: 1px solid #e6e7ef;
+  position: fixed;
+  top: 0;
+  left: 240px; /* bằng chiều rộng sidebar */
+  width: calc(100% - 240px);
+  z-index: 999;
   display: flex;
   align-items: center;
-  gap: 22px;
-  position: relative;
-  box-shadow: 0px 8px 20px rgba(100, 110, 150, 0.15);
-  transition: 0.25s ease;
-  border: 1px solid rgba(200, 200, 230, 0.25);
+  justify-content: space-between;
 }
 
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0px 14px 28px rgba(90, 100, 160, 0.25);
-}
-
-/* ICON */
-.icon {
-  width: 62px;
-  height: 62px;
-  border-radius: 16px;
-  background: linear-gradient(135deg, #6f89d8, #295abd);
+/* SEARCH BOX */
+.search-box {
+  width: 320px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  color: white;
-  font-size: 26px;
-  box-shadow: 0px 8px 18px rgba(90, 110, 220, 0.35);
+  gap: 12px;
+  padding: 10px 18px;
+  background: #eef1ff;
+  border-radius: 10px;
 }
 
-/* INFO */
-.info h4 {
-  font-size: 20px;
+.search-box input {
+  border: none;
+  background: transparent;
+  outline: none;
+}
+
+/* USER AREA */
+.top-right {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.user-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-name {
+  font-weight: 700;
+}
+
+.role {
+  font-size: 12.5px;
+  color: #888;
+}
+
+/* ================= CONTENT ================= */
+.dashboard {
+  padding: 32px 38px;
+}
+
+.welcome {
+  font-size: 34px;
   font-weight: 900;
-  color: #1a1e2e;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+  margin-bottom: 8px;
+  color: #1e1e1e;
 }
 
-.info p {
-  font-size: 14px;
-  margin-top: 5px;
-  color: #6b7398;
+.desc {
+  font-size: 16px;
+  color: #555;
+}
+/* ================= FIX BUTTON BORDER ================= */
+button,
+.menu-item,
+.dropdown-btn {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: none;
 }
 
-/* BUTTON CHI TIẾT */
-.detail-btn {
+/* Khi hover cũng không viền */
+button:hover,
+.dropdown-btn:hover {
+  border: none !important;
+}
+
+/* Đảm bảo item không tự tạo border */
+.menu-item {
+  border: 1px solid transparent !important;
+}
+
+/* Active item chỉ có màu nền, không viền */
+.menu-item.active {
+  border: none !important;
+}
+
+/* ================= REMOVE NOTIFICATION ICON ================= */
+.top-right .notification,
+.top-right i.fa-bell {
+  display: none !important;
+}
+.dropdown-btn {
+  border: 1px solid transparent !important;
+  padding: 12px 16px !important;
+  transition: background 0.2s ease; /* KHÔNG transition border/padding */
+  box-sizing: border-box;
+}
+
+/* Khi hover không thay đổi kích thước */
+.dropdown-btn:hover {
+  background: rgba(77, 107, 255, 0.08);
+  border: 1px solid transparent !important; /* không tạo border */
+  padding: 12px 16px !important; /* không đổi padding */
+}
+
+/* Khi active cũng không đổi kích thước */
+.dropdown-btn.active {
+  background: #e8edff !important;
+  border: 1px solid transparent !important;
+  padding: 12px 16px !important;
+}
+/* Căn trái cho mục SÁCH */
+.dropdown-btn {
+  display: flex;
+  justify-content: flex-start !important; /* căn trái */
+  gap: 10px; /* khoảng cách icon ↔ chữ */
+}
+
+/* Nhóm menu-left giữ icon và chữ sát nhau */
+.dropdown-btn .menu-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Đẩy mũi tên sang phải */
+.dropdown-btn .arrow {
   margin-left: auto;
-  background: linear-gradient(135deg, #6f89d8, #295abd);
-  padding: 10px 26px;
-  border-radius: 30px;
-  color: white;
-  font-weight: 800;
-  text-decoration: none;
-  transition: 0.25s ease;
-  font-size: 14px;
-  letter-spacing: 0.3px;
-}
-
-.detail-btn:hover {
-  background: #6f89d8;
-  transform: translateY(-2px);
-  box-shadow: 0px 6px 15px rgba(120, 140, 220, 0.3);
-}
-
-/* RESPONSIVE */
-@media (max-width: 500px) {
-  .card {
-    flex-direction: column;
-    text-align: center;
-    padding: 30px;
-  }
-
-  .detail-btn {
-    margin: 14px auto 0;
-  }
-}
-.admin-header {
-  position: relative;
-}
-
-.admin-header::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, #ffffff55, #ffffffaa, #ffffff55);
 }
