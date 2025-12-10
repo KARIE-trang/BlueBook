@@ -77,6 +77,7 @@ const TonKhoTheoTheLoai = async () => {
     FROM theloai
     JOIN sach ON sach.matheloai = theloai.matheloai
     GROUP BY theloai.matheloai, theloai.tentheloai
+    order by soluong desc
   `);
   return kq;
 };

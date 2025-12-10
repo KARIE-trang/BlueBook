@@ -1,0 +1,293 @@
+/* ===== TRANG CHI TIẾT SÁCH ===== */
+
+.book-detail-page {
+  padding: 10rem 9% 4rem; /* chừa chỗ header fixed giống các trang khác */
+  background: #f7f7ff;
+}
+
+/* ===== BREADCRUMB ===== */
+
+.breadcrumb {
+  font-size: 1.4rem;
+  color: var(--light-color);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.breadcrumb a {
+  color: var(--light-color);
+}
+
+.breadcrumb a:hover {
+  color: var(--pink-main);
+}
+
+.breadcrumb .current {
+  font-weight: 700;
+  color: var(--black);
+}
+
+/* ===== KHỐI CHÍNH: ẢNH + THÔNG TIN ===== */
+
+.book-detail-main {
+  margin-top: 2.5rem;
+  background: #fff;
+  box-shadow: var(--box-shadow);
+  border-radius: 1.5rem;
+  padding: 2.5rem 3rem;
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+/* Cột trái: ảnh sách */
+.book-detail-left {
+  flex: 0 0 34%;
+}
+
+.book-cover-wrapper {
+  border: var(--border);
+  border-radius: 1.2rem;
+  padding: 1.8rem;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.book-cover-img {
+  width: 100%;
+  max-height: 430px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Cột phải: thông tin */
+.book-detail-right {
+  flex: 1;
+}
+
+.book-title {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--black);
+  margin-bottom: 1rem;
+}
+
+/* Meta info: tác giả, thể loại, năm, tình trạng */
+
+.book-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 2.2rem;
+}
+
+.book-meta-item {
+  font-size: 1.5rem;
+}
+
+.book-meta-item .label {
+  font-weight: 600;
+  color: var(--black);
+  margin-right: 0.4rem;
+}
+
+.book-meta-item .value {
+  color: var(--light-color);
+}
+
+.book-meta-item .status {
+  font-weight: 700;
+}
+
+.book-meta-item .status.in-stock {
+  color: #1aa66a;
+}
+
+.book-meta-item .status.out-of-stock {
+  color: #e74c3c;
+}
+
+/* Giá */
+
+.book-price-block {
+  margin-bottom: 2.2rem;
+}
+
+.book-price {
+  font-size: 2.3rem;
+  font-weight: 800;
+  color: var(--pink-main);
+}
+
+/* ===== HÀNH ĐỘNG: SỐ LƯỢNG + NÚT ===== */
+
+.book-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.quantity-group {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  font-size: 1.5rem;
+}
+
+.quantity-group .label {
+  font-weight: 600;
+  color: var(--black);
+}
+
+.quantity-input {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  border: var(--border);
+  overflow: hidden;
+}
+
+.qty-btn {
+  border: none;
+  outline: none;
+  background: #f3f3ff;
+  padding: 0.6rem 1.2rem;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.qty-value {
+  width: 5rem;
+  text-align: center;
+  border: none;
+  outline: none;
+  font-size: 1.5rem;
+  padding: 0.4rem 0.2rem;
+}
+
+/* Nút hành động */
+
+.action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.btn-primary,
+.btn-secondary {
+  font-size: 1.5rem;
+  padding: 0.9rem 1.8rem;
+  border-radius: 999px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  box-shadow: var(--box-shadow);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s;
+}
+
+.btn-primary {
+  background: var(--pink-main);
+  color: #fff;
+}
+
+.btn-primary i {
+  font-size: 1.4rem;
+}
+
+.btn-secondary {
+  background: #fff;
+  color: var(--pink-main);
+  border: 0.1rem solid rgba(235, 104, 159, 0.3);
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.7rem 1.6rem rgba(0, 0, 0, 0.12);
+}
+
+/* ===== MÔ TẢ SÁCH ===== */
+
+.book-description {
+  margin-top: 3rem;
+  background: #fff;
+  box-shadow: var(--box-shadow);
+  border-radius: 1.5rem;
+  padding: 2.4rem 3rem;
+}
+
+.book-description h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--black);
+  margin-bottom: 1.2rem;
+}
+
+.book-description p {
+  font-size: 1.5rem;
+  line-height: 1.7;
+  color: var(--light-color);
+  text-align: justify;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 992px) {
+  .book-detail-main {
+    flex-direction: column;
+    padding: 2rem;
+  }
+
+  .book-detail-left {
+    width: 100%;
+  }
+
+  .book-detail-right {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .book-detail-page {
+    padding: 9rem 5% 3rem;
+  }
+
+  .book-detail-main {
+    padding: 1.8rem 1.6rem;
+  }
+
+  .book-description {
+    padding: 2rem 1.6rem;
+  }
+
+  .book-title {
+    font-size: 2.1rem;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    justify-content: center;
+    width: 100%;
+  }
+}
+.book-detail-right {
+  padding-left: 3rem; /* hoặc 2rem */
+}
+.book-detail-left {
+  flex: 0 0 42%; /* từ 34% → 42% */
+}
+.book-meta {
+  gap: 1.5rem; /* hoặc 1.4rem nếu muốn thoáng nữa */
+}

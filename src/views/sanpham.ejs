@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tất Cả Sách - BlueBook</title>
+
+    <!-- Icon + Font -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS chung của user -->
+    <link rel="stylesheet" href="/users/css/home.css" />
+
+    <!-- CSS riêng cho trang tất cả sản phẩm -->
+    <link rel="stylesheet" href="/users/css/sanpham.css" />
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header>
+      <a href="/" class="logo">BlueBook</a>
+
+      <nav class="navbar">
+        <a href="/home">Trang Chủ</a>
+        <a href="#theloai">Giới Thiệu</a>
+        <a href="/sanpham">Sản Phẩm</a>
+        <a href="#footer">Liên Hệ</a>
+      </nav>
+
+      <div class="icons">
+        <i class="fas fa-bars" id="menu-bars"></i>
+        <a href="#timkiem" class="fas fa-search" title="Tìm kiếm"></a>
+        <a href="/cart" class="fas fa-shopping-cart" title="Giỏ hàng"></a>
+        <a href="/yeu-thich" class="fas fa-heart" title="Yêu thích"></a>
+
+        <% if (users) { %>
+        <!-- Đã đăng nhập -->
+        <a href="/profile" class="fas fa-user" title="Trang cá nhân"></a>
+        <a
+          href="/logout"
+          class="fas fa-right-from-bracket"
+          title="Đăng xuất"
+        ></a>
+        <% } else { %>
+        <!-- Chưa đăng nhập -->
+        <a href="/login" class="fas fa-user-lock" title="Đăng nhập"></a>
+        <a href="/register" class="fas fa-user-plus" title="Đăng ký"></a>
+        <% } %>
+      </div>
+    </header>
+    <!-- include header của m -->
+
+    <main class="products-page">
+      <!-- Breadcrumb -->
+
+      <!-- TIÊU ĐỀ + THANH LỌC Ở CÙNG 1 HÀNG -->
+      <div class="products-header">
+        <div class="products-header-left">
+          <div class="products-header-title">Tất Cả Sách</div>
+          <div class="products-header-sub">
+            Khám phá kho sách phong phú của BlueBook.
+          </div>
+        </div>
+
+        <div class="products-header-right">
+          <div class="products-toolbar">
+            <div class="products-toolbar-left">
+              Đang hiển thị <span>1 - 12</span> / <span>245</span>
+            </div>
+            <div class="products-toolbar-right">
+              <select class="sort-select">
+                <option>Sắp xếp mặc định</option>
+                <option>Giá: thấp đến cao</option>
+                <option>Giá: cao đến thấp</option>
+                <option>Mới nhất</option>
+              </select>
+
+              <div class="toolbar-search">
+                <input type="text" placeholder="Tìm theo tên sách..." />
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LAYOUT: SIDEBAR + LƯỚI SÁCH  -->
+      <div class="products-layout">
+        <!-- SIDEBAR -->
+        <aside class="filter-sidebar">
+          <h3><i class="fa-solid fa-filter"></i> Lọc sản phẩm</h3>
+
+          <div>
+            <div class="filter-section-title">Thể Loại</div>
+            <ul class="category-list">
+              <li>
+                <a href="#" class="active"
+                  ><span>Tất Cả</span><span class="count">245</span></a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><span>Văn Học</span><span class="count">80</span></a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><span>Kỹ Năng Sống</span><span class="count">40</span></a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><span>Thiếu Nhi</span><span class="count">35</span></a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <div class="filter-section-title">Khoảng Giá</div>
+            <div class="filter-price-tag">
+              <i class="fa-solid fa-arrow-up-wide-short"></i>
+              Giá từ thấp → cao
+            </div>
+          </div>
+        </aside>
+
+        <!-- CONTENT BÊN PHẢI: CHỈ CÒN GRID + PHÂN TRANG -->
+        <section class="products-content">
+          <div class="product-grid">
+            <!-- 1 card demo -->
+            <%for(let i = 0 ; i < listsach.length; i++){ %>
+
+            <article class="product-card">
+              <div class="product-img-wrapper">
+                <img src="/uploads/<%=listsach[i].hinhanh%>" alt="Tên sách" />
+                <span class="product-tag">Mới</span>
+              </div>
+
+              <div class="product-body">
+                <h3 class="product-title"><%=listsach[i].tensach%></h3>
+                <div class="product-author"><%=listsach[i].tentacgia%></div>
+                <div class="product-price-row">
+                  <div class="product-price-main">
+                    <%=Number(listsach[i].giaban).toLocaleString("vi-VN")%>đ
+                  </div>
+                </div>
+              </div>
+
+              <div class="product-actions">
+                <button class="btn-view">Xem chi tiết</button>
+                <button class="btn-add">
+                  <i class="fa-solid fa-cart-plus"></i>
+                </button>
+              </div>
+            </article>
+            <% }%>
+          </div>
+
+          <nav class="pagination">
+            <span class="disabled"
+              ><i class="fa-solid fa-chevron-left"></i
+            ></span>
+            <a href="#" class="active">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#"><i class="fa-solid fa-chevron-right"></i></a>
+          </nav>
+        </section>
+      </div>
+    </main>
+
+    <section class="footer" id="footer">
+      <div class="box-container">
+        <div class="box">
+          <h3>Các cơ sở</h3>
+          <a href="#">484 Lạch Tray, Đổng Quốc Bình, Lê Chân, Hải Phòng</a>
+          <a href="#">Kiến An, Hải Phòng</a>
+          <a href="#">Nghi Lộc, Nghệ An</a>
+        </div>
+
+        <div class="box">
+          <h3>Các mục</h3>
+          <a href="#home">Trang chủ</a>
+          <a href="#theloai">Giới thiệu</a>
+          <a href="#sachmoi">Sản phẩm</a>
+          <a href="#footer">Liên hệ</a>
+        </div>
+
+        <div class="box">
+          <h3>Thông tin liên lạc</h3>
+          <a href="#">+911379883</a>
+          <a href="#">+358624259</a>
+          <a href="#">bluebook@gmail.com</a>
+        </div>
+
+        <div class="box">
+          <h3>Theo dõi chúng tôi</h3>
+          <a href="#"><i class="fab fa-facebook-f"></i> Facebook</a>
+          <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+        </div>
+      </div>
+
+      <div class="credit">
+        © <span>BlueBook</span> 2025 - All rights reserved.
+      </div>
+    </section>
+  </body>
+</html>

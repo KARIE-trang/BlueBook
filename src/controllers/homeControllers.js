@@ -1,6 +1,7 @@
 const connection = require("../config/database.js");
 const { LoginUsers, SignUp } = require("../services/CRUD_user.js");
 const { Top6SachBanChay, Top6SachMoi } = require("../services/thongke.js");
+const { getDanhSach } = require("../services/CRUD_sach.js");
 
 const getHome = async (req, res) => {
   let top6sachbanchay = await Top6SachBanChay();
@@ -63,6 +64,14 @@ const getDangXuat = (req, res) => {
   res.redirect("/home");
 };
 
+const getSanPham = async (req, res) => {
+  let listsach = await getDanhSach();
+  res.render("sanpham", { users: req.session.user, listsach });
+};
+
+const getSach = async (req, res) => {
+  res.render("user/sach");
+};
 module.exports = {
   getHome,
   getDangNhap,
@@ -70,4 +79,6 @@ module.exports = {
   postDangKy,
   postDangNhap,
   getDangXuat,
+  getSanPham,
+  getSach,
 };

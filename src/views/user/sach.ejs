@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đắc Nhân Tâm - BlueBook</title>
+
+    <!-- Icon + Font -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS chung -->
+    <link rel="stylesheet" href="/users/css/home.css" />
+    <!-- CSS riêng -->
+    <link rel="stylesheet" href="/users/css/chitietsach.css" />
+  </head>
+
+  <body>
+    <!-- ================== HEADER GIỮ NGUYÊN ================== -->
+    <header>
+      <a href="/" class="logo">BlueBook</a>
+
+      <nav class="navbar">
+        <a href="/">Trang Chủ</a>
+        <a href="/#theloai">Giới Thiệu</a>
+        <a href="/#sachmoi">Sản Phẩm</a>
+        <a href="#footer">Liên Hệ</a>
+      </nav>
+
+      <div class="icons">
+        <i class="fas fa-bars" id="menu-bars"></i>
+        <a href="/#timkiem" class="fas fa-search" title="Tìm kiếm"></a>
+        <a href="/cart" class="fas fa-shopping-cart" title="Giỏ hàng"></a>
+        <a href="/yeu-thich" class="fas fa-heart" title="Yêu thích"></a>
+
+        <a href="/login" class="fas fa-user-lock" title="Đăng nhập"></a>
+        <a href="/register" class="fas fa-user-plus" title="Đăng ký"></a>
+      </div>
+    </header>
+
+    <!-- ================== NỘI DUNG CHI TIẾT SÁCH ================== -->
+    <main class="book-detail-page">
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb">
+        <a href="/">Trang chủ</a>
+        <span>/</span>
+        <a href="/tat-ca-sach">Tất cả sách</a>
+        <span>/</span>
+        <span class="current">Đắc Nhân Tâm</span>
+      </nav>
+
+      <!-- Khối chính -->
+      <section class="book-detail-main">
+        <!-- Ảnh -->
+        <div class="book-detail-left">
+          <div class="book-cover-wrapper">
+            <img
+              src="/uploads/1765294724381-381073852.webp"
+              alt="Đắc Nhân Tâm"
+              class="book-cover-img"
+            />
+          </div>
+        </div>
+
+        <!-- Thông tin -->
+        <div class="book-detail-right">
+          <h1 class="book-title">Đắc Nhân Tâm</h1>
+
+          <div class="book-meta">
+            <div class="book-meta-item">
+              <span class="label">Tác giả:</span>
+              <span class="value">Dale Carnegie</span>
+            </div>
+
+            <div class="book-meta-item">
+              <span class="label">Thể loại:</span>
+              <span class="value">Kỹ Năng Sống</span>
+            </div>
+
+            <div class="book-meta-item">
+              <span class="label">Năm xuất bản:</span>
+              <span class="value">2021</span>
+            </div>
+
+            <div class="book-meta-item">
+              <span class="label">Tình Trạng:</span>
+              <span class="value status in-stock">Còn Hàng</span>
+            </div>
+
+            <div class="book-meta-item">
+              <span class="label">Mô Tả:</span>
+              <span class="value"
+                >Đắc Nhân Tâm - Được lòng người, là cuốn sách đưa ra các lời
+                khuyên về cách thức cư xử, ứng xử và giao tiếp với mọi người để
+                đạt được thành công trong cuộc sống. Gần 80 năm kể từ khi ra
+                đời, Đắc Nhân Tâm là cuốn sách gối đầu giường của nhiều thế hệ
+                luôn muốn hoàn thiện chính mình để vươn tới một cuộc sống tốt
+                đẹp và thành công.</span
+              >
+            </div>
+          </div>
+
+          <!-- Giá -->
+          <div class="book-price-block">
+            <div class="book-price">120.000đ</div>
+          </div>
+
+          <!-- Chọn số lượng -->
+          <form class="book-actions">
+            <div class="action-buttons">
+              <button type="button" class="btn-primary">
+                <i class="fa-solid fa-cart-plus"></i>
+                Thêm vào giỏ
+              </button>
+
+              <button type="button" class="btn-secondary">Mua ngay</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- ================== FOOTER GIỮ NGUYÊN ================== -->
+    <section class="footer" id="footer">
+      <div class="box-container">
+        <div class="box">
+          <h3>Các cơ sở</h3>
+          <a href="#">484 Lạch Tray, Đổng Quốc Bình, Lê Chân, Hải Phòng</a>
+          <a href="#">Kiến An, Hải Phòng</a>
+          <a href="#">Nghi Lộc, Nghệ An</a>
+        </div>
+
+        <div class="box">
+          <h3>Các mục</h3>
+          <a href="#home">Trang chủ</a>
+          <a href="#theloai">Giới thiệu</a>
+          <a href="#sachmoi">Sản phẩm</a>
+          <a href="#footer">Liên hệ</a>
+        </div>
+
+        <div class="box">
+          <h3>Thông tin liên lạc</h3>
+          <a href="#">+911379883</a>
+          <a href="#">+358624259</a>
+          <a href="#">bluebook@gmail.com</a>
+        </div>
+
+        <div class="box">
+          <h3>Theo dõi chúng tôi</h3>
+          <a href="#"><i class="fab fa-facebook-f"></i> Facebook</a>
+          <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+        </div>
+      </div>
+
+      <div class="credit">
+        © <span>BlueBook</span> 2025 - All rights reserved.
+      </div>
+    </section>
+  </body>
+</html>

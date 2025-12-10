@@ -8,6 +8,8 @@ const {
   postDangKy,
   postDangNhap,
   getDangXuat,
+  getSanPham,
+  getSach,
 } = require("../controllers/homeControllers.js");
 
 router.get("/home", getHome);
@@ -16,5 +18,6 @@ router.post("/login", postDangNhap);
 router.get("/register", getDangKy);
 router.post("/register", postDangKy);
 router.get("/logout", getDangXuat);
-
+router.get("/sanpham", getSanPham);
+router.get("/sanpham/book", getSach);
 module.exports = router;
