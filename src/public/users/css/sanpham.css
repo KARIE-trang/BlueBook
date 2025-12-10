@@ -356,8 +356,15 @@
   display: flex;
   gap: 0.6rem;
 }
-.btn-view,
-.btn-add {
+.product-actions {
+  margin-top: 0.8rem;
+  display: flex;
+  gap: 0.6rem;
+}
+
+/* áp dụng cho cả <button> lẫn <a> */
+.product-actions .btn-view,
+.product-actions .btn-add {
   flex: 1;
   padding: 0.6rem 0;
   border-radius: 999px;
@@ -365,7 +372,14 @@
   border: none;
   cursor: pointer;
   text-transform: none;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none; /* để thẻ a không bị gạch chân */
 }
+
+/* nút xem chi tiết (thẻ a) */
 .btn-view {
   background: #f3f4f6;
   color: var(--black);
@@ -373,6 +387,8 @@
 .btn-view:hover {
   background: #e5e7eb;
 }
+
+/* nút thêm vào giỏ (button) */
 .btn-add {
   background: var(--pink-main);
   color: #fff;
@@ -420,4 +436,24 @@
 .pagination .disabled {
   opacity: 0.4;
   pointer-events: none;
+}
+.no-product {
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: #777;
+  text-align: center;
+}
+/* để form không phá layout flex */
+.product-actions form {
+  flex: 1; /* chiếm 1 phần như nút "Xem chi tiết" */
+  margin: 0; /* tránh bị lệch do margin mặc định */
+}
+
+/* cho nút trong form tự căng full chiều ngang */
+.product-actions form .btn-add {
+  width: 100%;
 }

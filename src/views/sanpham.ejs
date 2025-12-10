@@ -25,24 +25,24 @@
   <body>
     <!-- HEADER -->
     <header>
-      <a href="/" class="logo">BlueBook</a>
+      <a href="/home" class="logo">BlueBook</a>
 
       <nav class="navbar">
         <a href="/home">Trang Chủ</a>
-        <a href="#theloai">Giới Thiệu</a>
         <a href="/sanpham">Sản Phẩm</a>
         <a href="#footer">Liên Hệ</a>
       </nav>
 
       <div class="icons">
-        <i class="fas fa-bars" id="menu-bars"></i>
-        <a href="#timkiem" class="fas fa-search" title="Tìm kiếm"></a>
-        <a href="/cart" class="fas fa-shopping-cart" title="Giỏ hàng"></a>
-        <a href="/yeu-thich" class="fas fa-heart" title="Yêu thích"></a>
-
         <% if (users) { %>
+        <i class="fas fa-bars" id="menu-bars"></i>
+        <a
+          href="/user/giohang"
+          class="fas fa-shopping-cart"
+          title="Giỏ hàng"
+        ></a>
         <!-- Đã đăng nhập -->
-        <a href="/profile" class="fas fa-user" title="Trang cá nhân"></a>
+        <a href="/edit_profile" class="fas fa-user" title="Trang cá nhân"></a>
         <a
           href="/logout"
           class="fas fa-right-from-bracket"
@@ -75,17 +75,24 @@
               Đang hiển thị <span>1 - 12</span> / <span>245</span>
             </div>
             <div class="products-toolbar-right">
-              <select class="sort-select">
-                <option>Sắp xếp mặc định</option>
-                <option>Giá: thấp đến cao</option>
-                <option>Giá: cao đến thấp</option>
-                <option>Mới nhất</option>
-              </select>
-
-              <div class="toolbar-search">
-                <input type="text" placeholder="Tìm theo tên sách..." />
-                <i class="fa-solid fa-magnifying-glass"></i>
+              <div class="products-toolbar-right">
+                <select id="sort" class="sort-select">
+                  <option value="">Sắp xếp mặc định</option>
+                  <option value="asc">Giá: thấp đến cao</option>
+                  <option value="desc">Giá: cao đến thấp</option>
+                </select>
               </div>
+
+              <form class="toolbar-search" action="/sanpham" method="GET">
+                <input
+                  type="text"
+                  name="search"
+                  placeholder="Tìm theo tên sách..."
+                />
+                <button type="submit">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+              </form>
             </div>
           </div>
         </div>
@@ -101,78 +108,86 @@
             <div class="filter-section-title">Thể Loại</div>
             <ul class="category-list">
               <li>
-                <a href="#" class="active"
-                  ><span>Tất Cả</span><span class="count">245</span></a
+                <a
+                  href="/sanpham?filter=tatca"
+                  class="<%= filter === 'tatca' ? 'active' : '' %>"
                 >
+                  <span>Tất Cả</span>
+                  <span class="count"><%= tongsach.tongsach %></span>
+                </a>
               </li>
+              <%for(let i = 0 ; i < theloai.length; i++){ %>
               <li>
-                <a href="#"
-                  ><span>Văn Học</span><span class="count">80</span></a
+                <a
+                  href="/sanpham?filter=<%=theloai[i].matheloai%>"
+                  class="<%= filter == theloai[i].matheloai ? 'active' : '' %>"
+                  ><span><%=theloai[i].tentheloai%></span
+                  ><span class="count"><%=theloai[i].soluongsach%></span></a
                 >
               </li>
-              <li>
-                <a href="#"
-                  ><span>Kỹ Năng Sống</span><span class="count">40</span></a
-                >
-              </li>
-              <li>
-                <a href="#"
-                  ><span>Thiếu Nhi</span><span class="count">35</span></a
-                >
-              </li>
+              <% }%>
             </ul>
-          </div>
-
-          <div>
-            <div class="filter-section-title">Khoảng Giá</div>
-            <div class="filter-price-tag">
-              <i class="fa-solid fa-arrow-up-wide-short"></i>
-              Giá từ thấp → cao
-            </div>
           </div>
         </aside>
 
         <!-- CONTENT BÊN PHẢI: CHỈ CÒN GRID + PHÂN TRANG -->
         <section class="products-content">
-          <div class="product-grid">
-            <!-- 1 card demo -->
-            <%for(let i = 0 ; i < listsach.length; i++){ %>
+          <% if (!listsach || listsach.length === 0) { %>
 
+          <div class="no-product">Không tìm thấy sách nào phù hợp.</div>
+
+          <% } else { %>
+
+          <div class="product-grid">
+            <% for (let i = 0; i < listsach.length; i++) { %>
             <article class="product-card">
               <div class="product-img-wrapper">
-                <img src="/uploads/<%=listsach[i].hinhanh%>" alt="Tên sách" />
+                <img src="/uploads/<%= listsach[i].hinhanh %>" alt="Tên sách" />
                 <span class="product-tag">Mới</span>
               </div>
 
               <div class="product-body">
-                <h3 class="product-title"><%=listsach[i].tensach%></h3>
-                <div class="product-author"><%=listsach[i].tentacgia%></div>
+                <h3 class="product-title"><%= listsach[i].tensach %></h3>
+                <div class="product-author"><%= listsach[i].tentacgia %></div>
                 <div class="product-price-row">
                   <div class="product-price-main">
-                    <%=Number(listsach[i].giaban).toLocaleString("vi-VN")%>đ
+                    <%= Number(listsach[i].giaban).toLocaleString("vi-VN") %>đ
                   </div>
                 </div>
               </div>
 
               <div class="product-actions">
-                <button class="btn-view">Xem chi tiết</button>
-                <button class="btn-add">
-                  <i class="fa-solid fa-cart-plus"></i>
-                </button>
+                <a
+                  class="btn-view"
+                  href="/sanpham/book/<%= listsach[i].masach %>"
+                >
+                  Xem chi tiết
+                </a>
+                <form
+                  action="/user/add_giohang/<%= listsach[i].masach %>"
+                  method="POST"
+                >
+                  <button type="submit" class="btn-add">
+                    <i class="fa-solid fa-cart-plus"></i>
+                  </button>
+                </form>
               </div>
             </article>
-            <% }%>
+            <% } %>
           </div>
 
+          <!-- chỉ hiện pagination khi có sách -->
           <nav class="pagination">
-            <span class="disabled"
-              ><i class="fa-solid fa-chevron-left"></i
-            ></span>
+            <span class="disabled">
+              <i class="fa-solid fa-chevron-left"></i>
+            </span>
             <a href="#" class="active">1</a>
             <a href="#">2</a>
             <a href="#">3</a>
             <a href="#"><i class="fa-solid fa-chevron-right"></i></a>
           </nav>
+
+          <% } %>
         </section>
       </div>
     </main>
@@ -213,4 +228,41 @@
       </div>
     </section>
   </body>
+  <script>
+    const sortSelect = document.getElementById("sort");
+    const grid = document.querySelector(".product-grid");
+
+    function getPriceFromCard(card) {
+      const priceText = card
+        .querySelector(".product-price-main")
+        .innerText.replace(/[^\d]/g, ""); // bỏ dấu . , đ, khoảng trắng
+      return Number(priceText) || 0;
+    }
+
+    function getIdFromCard(card) {
+      // nếu m có data-id thì dùng cho "Mới nhất"
+      return Number(card.getAttribute("data-masach") || 0);
+    }
+
+    sortSelect.addEventListener("change", function () {
+      const value = this.value;
+      const cards = Array.from(grid.querySelectorAll(".product-card"));
+
+      if (value === "") {
+        // có thể bỏ trống nếu không cần reset
+        return;
+      }
+
+      if (value === "asc") {
+        cards.sort((a, b) => getPriceFromCard(a) - getPriceFromCard(b));
+      } else if (value === "desc") {
+        cards.sort((a, b) => getPriceFromCard(b) - getPriceFromCard(a));
+      } else if (value === "new") {
+        cards.sort((a, b) => getIdFromCard(b) - getIdFromCard(a));
+      }
+
+      // clear + append lại theo thứ tự mới
+      cards.forEach((card) => grid.appendChild(card));
+    });
+  </script>
 </html>

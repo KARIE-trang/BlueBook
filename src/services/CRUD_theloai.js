@@ -6,7 +6,23 @@ const DanhSachTheLoai = async () => {
             COUNT(sach.masach) AS soluongsach
      FROM theloai 
      LEFT JOIN sach ON sach.matheloai = theloai.matheloai
-     GROUP BY theloai.matheloai, tentheloai, trangthai_theloai`
+     GROUP BY theloai.matheloai, tentheloai, trangthai_theloai
+     `
+  );
+  return kq;
+};
+
+const DanhSachTheLoaiSapXep = async () => {
+  let [kq] = await connection.query(
+    `SELECT 
+        theloai.matheloai,
+        theloai.tentheloai,
+        theloai.trangthai_theloai,
+        COUNT(sach.masach) AS soluongsach
+     FROM theloai
+     JOIN sach ON sach.matheloai = theloai.matheloai
+     GROUP BY theloai.matheloai, theloai.tentheloai, theloai.trangthai_theloai
+     ORDER BY soluongsach DESC`
   );
   return kq;
 };
@@ -84,6 +100,7 @@ const TonKhoTheoTheLoai = async () => {
 
 module.exports = {
   DanhSachTheLoai,
+  DanhSachTheLoaiSapXep,
   getAllTheLoai,
   ThemTheLoai,
   layTheLoai,

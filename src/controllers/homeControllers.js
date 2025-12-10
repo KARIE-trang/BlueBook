@@ -1,7 +1,14 @@
 const connection = require("../config/database.js");
 const { LoginUsers, SignUp } = require("../services/CRUD_user.js");
-const { Top6SachBanChay, Top6SachMoi } = require("../services/thongke.js");
-const { getDanhSach } = require("../services/CRUD_sach.js");
+const {
+  Top6SachBanChay,
+  Top6SachMoi,
+  TongSach,
+  LocTheoTheLoai,
+  TimKiem,
+} = require("../services/thongke.js");
+const { getDanhSach, getEditSach } = require("../services/CRUD_sach.js");
+const { DanhSachTheLoaiSapXep } = require("../services/CRUD_theloai.js");
 
 const getHome = async (req, res) => {
   let top6sachbanchay = await Top6SachBanChay();
@@ -65,13 +72,35 @@ const getDangXuat = (req, res) => {
 };
 
 const getSanPham = async (req, res) => {
-  let listsach = await getDanhSach();
-  res.render("sanpham", { users: req.session.user, listsach });
+  let theloai = await DanhSachTheLoaiSapXep();
+  let tongsach = await TongSach();
+  let matheloai = req.query.filter || "tatca";
+  let listsach;
+  let search = (req.query.search || "").trim();
+  if (!search) {
+    if (matheloai === "tatca") {
+      listsach = await getDanhSach();
+    } else {
+      listsach = await LocTheoTheLoai(matheloai);
+    }
+  } else {
+    listsach = await TimKiem(search);
+  }
+  res.render("sanpham", {
+    users: req.session.users,
+    listsach,
+    theloai,
+    tongsach,
+    filter: matheloai,
+  });
 };
 
 const getSach = async (req, res) => {
-  res.render("user/sach");
+  let masach = req.params.masach;
+  let sach = await getEditSach(masach);
+  res.render("user/sach", { sach });
 };
+
 module.exports = {
   getHome,
   getDangNhap,

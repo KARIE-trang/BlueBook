@@ -186,6 +186,28 @@ const Top6SachMoi = async () => {
   return kq;
 };
 
+const LocTheoTheLoai = async (matheloai) => {
+  let [kq] = await connection.query(
+    `select sach.*, theloai.matheloai from sach join theloai
+    on sach.matheloai = theloai.matheloai where theloai.matheloai = ?`,
+    [matheloai]
+  );
+  return kq;
+};
+
+const TimKiem = async (search) => {
+  const keyword = `%${search}%`; // thêm % ở JS
+
+  let [kq] = await connection.query(
+    `SELECT sach.*, theloai.matheloai, theloai.tentheloai
+     FROM sach 
+     JOIN theloai ON sach.matheloai = theloai.matheloai
+     WHERE sach.tensach LIKE ?`,
+    [keyword]
+  );
+  return kq;
+};
+
 module.exports = {
   DoanhThuLoc,
   SoDonHuy,
@@ -200,4 +222,6 @@ module.exports = {
   Top6SachBanChay,
   Top5NguoiDungMoi,
   Top6SachMoi,
+  LocTheoTheLoai,
+  TimKiem,
 };

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thanh Toán - BlueBook</title>
+
+    <!-- Icon + Font -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS chung -->
+    <link rel="stylesheet" href="/users/css/home.css" />
+    <!-- CSS riêng -->
+    <link rel="stylesheet" href="/users/css/thanhtoan.css" />
+  </head>
+
+  <body>
+    <!-- ================== HEADER GIỮ NGUYÊN ================== -->
+    <header>
+      <a href="/" class="logo">BlueBook</a>
+
+      <nav class="navbar">
+        <a href="/">Trang Chủ</a>
+        <a href="/#theloai">Giới Thiệu</a>
+        <a href="/#sachmoi">Sản Phẩm</a>
+        <a href="#footer">Liên Hệ</a>
+      </nav>
+
+      <div class="icons">
+        <i class="fas fa-bars" id="menu-bars"></i>
+        <a href="/#timkiem" class="fas fa-search" title="Tìm kiếm"></a>
+        <a href="/cart" class="fas fa-shopping-cart" title="Giỏ hàng"></a>
+        <a href="/yeu-thich" class="fas fa-heart" title="Yêu thích"></a>
+        <a href="/login" class="fas fa-user-lock" title="Đăng nhập"></a>
+        <a href="/register" class="fas fa-user-plus" title="Đăng ký"></a>
+      </div>
+    </header>
+
+    <!-- ================== THANH TOÁN ================== -->
+    <main class="checkout-page">
+      <div class="checkout-container">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb">
+          <a href="/">Trang chủ</a>
+          <span>/</span>
+          <a href="/cart">Giỏ hàng</a>
+          <span>/</span>
+          <span class="current">Thanh toán</span>
+        </nav>
+
+        <!-- Tiêu đề -->
+        <header class="checkout-header">
+          <div>
+            <h1>Thanh toán</h1>
+            <p>Điền thông tin nhận hàng và kiểm tra lại đơn của bạn.</p>
+          </div>
+          <p class="checkout-step">Bước 2 / 2</p>
+        </header>
+
+        <!-- Layout 2 cột -->
+        <section class="checkout-layout">
+          <!-- ===== CỘT TRÁI: THÔNG TIN NHẬN HÀNG ===== -->
+          <div class="checkout-left">
+            <!-- Thông tin người nhận -->
+            <div class="checkout-card">
+              <h2>Thông tin người nhận</h2>
+
+              <!-- Demo: form, sau này m đổi action + name input theo backend -->
+              <form>
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label for="hoten">Họ và tên</label>
+                    <input
+                      type="text"
+                      id="hoten"
+                      placeholder="Nguyễn Văn A"
+                      value="Nguyễn Thị Trang"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="sdt">Số điện thoại</label>
+                    <input
+                      type="text"
+                      id="sdt"
+                      placeholder="0123 456 789"
+                      value="0901 234 567"
+                    />
+                  </div>
+
+                  <div class="form-group full">
+                    <label for="diachi">Địa chỉ nhận hàng</label>
+                    <input
+                      type="text"
+                      id="diachi"
+                      placeholder="Ví dụ: 484 Lạch Tray, Đổng Quốc Bình, Lê Chân, Hải Phòng"
+                      value="484 Lạch Tray, Đổng Quốc Bình, Lê Chân, Hải Phòng"
+                    />
+                  </div>
+
+                  <div class="form-group full">
+                    <label for="ghichu">Ghi chú cho đơn hàng</label>
+                    <textarea
+                      id="ghichu"
+                      rows="3"
+                      placeholder="VD: Giao giờ hành chính, gọi trước khi giao..."
+                    >
+Giao trong giờ hành chính, gọi trước khi đến.</textarea
+                    >
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <!-- Ghi chú phương thức thanh toán (mặc định COD) -->
+            <div class="checkout-card">
+              <h2>Phương thức thanh toán</h2>
+              <p class="payment-note">
+                <i class="fa-solid fa-money-bill-wave"></i>
+                Đơn hàng này sẽ được thanh toán bằng hình thức
+                <strong>Thanh toán khi nhận hàng (COD)</strong>. Bạn chỉ cần
+                chuẩn bị tiền mặt khi nhận sách từ nhân viên giao hàng.
+              </p>
+            </div>
+          </div>
+
+          <!-- ===== CỘT PHẢI: TÓM TẮT ĐƠN HÀNG (CÓ ẢNH) ===== -->
+          <aside class="checkout-right">
+            <div class="checkout-card summary-card">
+              <h2>Đơn hàng của bạn</h2>
+
+              <!-- Sản phẩm 1 -->
+              <div class="summary-item">
+                <div class="summary-thumb">
+                  <img
+                    src="/uploads/1765294724381-381073852.webp"
+                    alt="Đắc Nhân Tâm"
+                  />
+                </div>
+                <div class="summary-info">
+                  <p class="summary-name">Đắc Nhân Tâm</p>
+                  <p class="summary-meta">Số lượng: 1</p>
+                </div>
+                <p class="summary-price">120.000đ</p>
+              </div>
+
+              <!-- Sản phẩm 2 -->
+              <div class="summary-item">
+                <div class="summary-thumb">
+                  <img src="/uploads/sachmau.webp" alt="Tư Duy Nhanh Và Chậm" />
+                </div>
+                <div class="summary-info">
+                  <p class="summary-name">Tư Duy Nhanh Và Chậm</p>
+                  <p class="summary-meta">Số lượng: 2</p>
+                </div>
+                <p class="summary-price">370.000đ</p>
+              </div>
+
+              <div class="summary-divider"></div>
+
+              <div class="summary-row">
+                <span>Tạm tính</span>
+                <span>490.000đ</span>
+              </div>
+
+              <div class="summary-row">
+                <span>Phí vận chuyển</span>
+                <span class="free-ship">Miễn phí</span>
+              </div>
+
+              <div class="summary-row">
+                <span>Giảm giá</span>
+                <span>0đ</span>
+              </div>
+
+              <div class="summary-divider"></div>
+
+              <div class="summary-row summary-total">
+                <span>Tổng cộng</span>
+                <span>490.000đ</span>
+              </div>
+
+              <button class="btn-place-order">Đặt hàng</button>
+
+              <a href="/cart" class="btn-back-cart">
+                <i class="fa-solid fa-arrow-left"></i>
+                Quay lại giỏ hàng
+              </a>
+            </div>
+          </aside>
+        </section>
+      </div>
+    </main>
+
+    <!-- ================== FOOTER GIỮ NGUYÊN ================== -->
+    <section class="footer" id="footer">
+      <div class="box-container">
+        <div class="box">
+          <h3>Các cơ sở</h3>
+          <a href="#">484 Lạch Tray, Đổng Quốc Bình, Lê Chân, Hải Phòng</a>
+          <a href="#">Kiến An, Hải Phòng</a>
+          <a href="#">Nghi Lộc, Nghệ An</a>
+        </div>
+
+        <div class="box">
+          <h3>Các mục</h3>
+          <a href="#home">Trang chủ</a>
+          <a href="#theloai">Giới thiệu</a>
+          <a href="#sachmoi">Sản phẩm</a>
+          <a href="#footer">Liên hệ</a>
+        </div>
+
+        <div class="box">
+          <h3>Thông tin liên lạc</h3>
+          <a href="#">+911379883</a>
+          <a href="#">+358624259</a>
+          <a href="#">bluebook@gmail.com</a>
+        </div>
+
+        <div class="box">
+          <h3>Theo dõi chúng tôi</h3>
+          <a href="#"><i class="fab fa-facebook-f"></i> Facebook</a>
+          <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+        </div>
+      </div>
+
+      <div class="credit">
+        © <span>BlueBook</span> 2025 - All rights reserved.
+      </div>
+    </section>
+  </body>
+</html>

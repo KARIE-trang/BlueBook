@@ -1,8 +1,10 @@
 /* ===== TRANG CHI TIẾT SÁCH ===== */
+/* Không đụng :root, *, html, body – dùng lại biến trong home.css */
 
 .book-detail-page {
-  padding: 10rem 9% 4rem; /* chừa chỗ header fixed giống các trang khác */
+  padding: 10rem 9% 4rem; /* chừa header fixed */
   background: #f7f7ff;
+  font-family: "Nunito", sans-serif;
 }
 
 /* ===== BREADCRUMB ===== */
@@ -14,10 +16,12 @@
   flex-wrap: wrap;
   gap: 0.5rem;
   align-items: center;
+  margin-bottom: 0.8rem;
 }
 
 .breadcrumb a {
   color: var(--light-color);
+  text-decoration: none;
 }
 
 .breadcrumb a:hover {
@@ -32,10 +36,10 @@
 /* ===== KHỐI CHÍNH: ẢNH + THÔNG TIN ===== */
 
 .book-detail-main {
-  margin-top: 2.5rem;
+  margin-top: 2rem;
   background: #fff;
-  box-shadow: var(--box-shadow);
-  border-radius: 1.5rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+  border-radius: 1.6rem;
   padding: 2.5rem 3rem;
   display: flex;
   gap: 3rem;
@@ -44,7 +48,7 @@
 
 /* Cột trái: ảnh sách */
 .book-detail-left {
-  flex: 0 0 34%;
+  flex: 0 0 38%;
 }
 
 .book-cover-wrapper {
@@ -67,51 +71,63 @@
 /* Cột phải: thông tin */
 .book-detail-right {
   flex: 1;
+  padding-left: 1rem;
 }
 
 .book-title {
   font-size: 2.4rem;
   font-weight: 800;
   color: var(--black);
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
 }
 
-/* Meta info: tác giả, thể loại, năm, tình trạng */
+/* Meta info: tác giả, thể loại, ngày phát hành, mô tả */
 
 .book-meta {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
-  margin-bottom: 2.2rem;
+  gap: 0.8rem;
+  margin-bottom: 2.4rem;
 }
 
 .book-meta-item {
   font-size: 1.5rem;
+  color: #444;
 }
 
+/* label chung */
 .book-meta-item .label {
-  font-weight: 600;
-  color: var(--black);
+  font-weight: 700;
+  color: #192a56;
   margin-right: 0.4rem;
 }
 
+/* value chung */
 .book-meta-item .value {
-  color: var(--light-color);
+  color: #444;
 }
 
-.book-meta-item .status {
-  font-weight: 700;
+/* riêng dòng mô tả: xuống dòng + giãn dòng + giữ xuống dòng trong DB */
+.book-meta-desc {
+  margin-top: 0.4rem;
 }
 
-.book-meta-item .status.in-stock {
-  color: #1aa66a;
+.book-meta-desc .label {
+  display: block;
+  margin-bottom: 0.3rem;
 }
 
-.book-meta-item .status.out-of-stock {
-  color: #e74c3c;
+.book-meta-desc .value {
+  display: block;
+  white-space: pre-line; /* GIỮ \n trong DB thành xuống dòng */
+  line-height: 1.8;
+  text-align: justify;
+  color: #444;
 }
-
-/* Giá */
+.book-meta-desc .value br + br {
+  text-indent: 2rem;
+}
+/* ===== GIÁ ===== */
 
 .book-price-block {
   margin-bottom: 2.2rem;
@@ -123,53 +139,13 @@
   color: var(--pink-main);
 }
 
-/* ===== HÀNH ĐỘNG: SỐ LƯỢNG + NÚT ===== */
+/* ===== HÀNH ĐỘNG: NÚT ===== */
 
 .book-actions {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
-
-.quantity-group {
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-  font-size: 1.5rem;
-}
-
-.quantity-group .label {
-  font-weight: 600;
-  color: var(--black);
-}
-
-.quantity-input {
-  display: inline-flex;
-  align-items: center;
-  border-radius: 999px;
-  border: var(--border);
-  overflow: hidden;
-}
-
-.qty-btn {
-  border: none;
-  outline: none;
-  background: #f3f3ff;
-  padding: 0.6rem 1.2rem;
-  font-size: 1.6rem;
-  cursor: pointer;
-}
-
-.qty-value {
-  width: 5rem;
-  text-align: center;
-  border: none;
-  outline: none;
-  font-size: 1.5rem;
-  padding: 0.4rem 0.2rem;
-}
-
-/* Nút hành động */
 
 .action-buttons {
   display: flex;
@@ -213,30 +189,6 @@
   box-shadow: 0 0.7rem 1.6rem rgba(0, 0, 0, 0.12);
 }
 
-/* ===== MÔ TẢ SÁCH ===== */
-
-.book-description {
-  margin-top: 3rem;
-  background: #fff;
-  box-shadow: var(--box-shadow);
-  border-radius: 1.5rem;
-  padding: 2.4rem 3rem;
-}
-
-.book-description h2 {
-  font-size: 2rem;
-  font-weight: 800;
-  color: var(--black);
-  margin-bottom: 1.2rem;
-}
-
-.book-description p {
-  font-size: 1.5rem;
-  line-height: 1.7;
-  color: var(--light-color);
-  text-align: justify;
-}
-
 /* ===== RESPONSIVE ===== */
 
 @media (max-width: 992px) {
@@ -245,12 +197,11 @@
     padding: 2rem;
   }
 
-  .book-detail-left {
-    width: 100%;
-  }
-
+  .book-detail-left,
   .book-detail-right {
     width: 100%;
+    flex: 1 1 auto;
+    padding-left: 0;
   }
 }
 
@@ -261,10 +212,6 @@
 
   .book-detail-main {
     padding: 1.8rem 1.6rem;
-  }
-
-  .book-description {
-    padding: 2rem 1.6rem;
   }
 
   .book-title {
@@ -282,12 +229,6 @@
     width: 100%;
   }
 }
-.book-detail-right {
-  padding-left: 3rem; /* hoặc 2rem */
-}
-.book-detail-left {
-  flex: 0 0 42%; /* từ 34% → 42% */
-}
-.book-meta {
-  gap: 1.5rem; /* hoặc 1.4rem nếu muốn thoáng nữa */
+.book-meta-desc .value {
+  text-transform: none !important;
 }

@@ -48,20 +48,19 @@
     <main class="book-detail-page">
       <!-- Breadcrumb -->
       <nav class="breadcrumb">
-        <a href="/">Trang chủ</a>
+        <a href="/home">Trang chủ</a>
         <span>/</span>
-        <a href="/tat-ca-sach">Tất cả sách</a>
+        <a href="/sanpham">Tất cả sách</a>
         <span>/</span>
-        <span class="current">Đắc Nhân Tâm</span>
+        <span class="current"><%=sach.tensach%></span>
       </nav>
 
-      <!-- Khối chính -->
       <section class="book-detail-main">
         <!-- Ảnh -->
         <div class="book-detail-left">
           <div class="book-cover-wrapper">
             <img
-              src="/uploads/1765294724381-381073852.webp"
+              src="/uploads/<%=sach.hinhanh%>"
               alt="Đắc Nhân Tâm"
               class="book-cover-img"
             />
@@ -70,45 +69,35 @@
 
         <!-- Thông tin -->
         <div class="book-detail-right">
-          <h1 class="book-title">Đắc Nhân Tâm</h1>
+          <h1 class="book-title"><%=sach.tensach%></h1>
 
           <div class="book-meta">
             <div class="book-meta-item">
               <span class="label">Tác giả:</span>
-              <span class="value">Dale Carnegie</span>
+              <span class="value"><%=sach.tentacgia%></span>
             </div>
 
             <div class="book-meta-item">
               <span class="label">Thể loại:</span>
-              <span class="value">Kỹ Năng Sống</span>
+              <span class="value"><%=sach.tentheloai%></span>
             </div>
 
             <div class="book-meta-item">
-              <span class="label">Năm xuất bản:</span>
-              <span class="value">2021</span>
+              <span class="label">Ngaỳ phát hành:</span>
+              <span class="value"><%=sach.ngayphathanh%></span>
             </div>
 
-            <div class="book-meta-item">
-              <span class="label">Tình Trạng:</span>
-              <span class="value status in-stock">Còn Hàng</span>
-            </div>
-
-            <div class="book-meta-item">
-              <span class="label">Mô Tả:</span>
-              <span class="value"
-                >Đắc Nhân Tâm - Được lòng người, là cuốn sách đưa ra các lời
-                khuyên về cách thức cư xử, ứng xử và giao tiếp với mọi người để
-                đạt được thành công trong cuộc sống. Gần 80 năm kể từ khi ra
-                đời, Đắc Nhân Tâm là cuốn sách gối đầu giường của nhiều thế hệ
-                luôn muốn hoàn thiện chính mình để vươn tới một cuộc sống tốt
-                đẹp và thành công.</span
-              >
+            <div class="book-meta-item book-meta-desc">
+              <span class="label">Mô tả:</span>
+              <p class="value"><%= sach.mota %></p>
             </div>
           </div>
 
           <!-- Giá -->
           <div class="book-price-block">
-            <div class="book-price">120.000đ</div>
+            <div class="book-price">
+              <%=Number(sach.giaban).toLocaleString("vi-VN")%>đ
+            </div>
           </div>
 
           <!-- Chọn số lượng -->
@@ -125,7 +114,6 @@
         </div>
       </section>
     </main>
-
     <!-- ================== FOOTER GIỮ NGUYÊN ================== -->
     <section class="footer" id="footer">
       <div class="box-container">
@@ -163,4 +151,31 @@
       </div>
     </section>
   </body>
+  <script>
+    document.querySelectorAll(".cart-item").forEach((item) => {
+      const minusBtn = item.querySelector(".item-qty button:first-child");
+      const plusBtn = item.querySelector(".item-qty button:last-child");
+      const qtyInput = item.querySelector(".item-qty input");
+
+      // Giảm
+      minusBtn.addEventListener("click", () => {
+        let value = parseInt(qtyInput.value);
+        if (value > 1) {
+          qtyInput.value = value - 1;
+        }
+      });
+
+      // Tăng
+      plusBtn.addEventListener("click", () => {
+        let value = parseInt(qtyInput.value);
+        qtyInput.value = value + 1;
+      });
+
+      // Không cho nhập linh tinh
+      qtyInput.addEventListener("input", () => {
+        let value = parseInt(qtyInput.value);
+        if (isNaN(value) || value < 1) qtyInput.value = 1;
+      });
+    });
+  </script>
 </html>

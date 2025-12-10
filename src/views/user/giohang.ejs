@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giỏ Hàng - BlueBook</title>
+
+    <!-- Icon + Font -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS chung -->
+    <link rel="stylesheet" href="/users/css/home.css" />
+
+    <!-- CSS riêng giỏ hàng -->
+    <link rel="stylesheet" href="/users/css/giohang.css" />
+  </head>
+
+  <body>
+    <!-- ================== HEADER GIỮ NGUYÊN ================== -->
+    <header>
+      <a href="/" class="logo">BlueBook</a>
+
+      <nav class="navbar">
+        <a href="/">Trang Chủ</a>
+        <a href="/#theloai">Giới Thiệu</a>
+        <a href="/#sachmoi">Sản Phẩm</a>
+        <a href="#footer">Liên Hệ</a>
+      </nav>
+
+      <div class="icons">
+        <i class="fas fa-bars" id="menu-bars"></i>
+        <a href="/#timkiem" class="fas fa-search"></a>
+        <a href="/cart" class="fas fa-shopping-cart"></a>
+        <a href="/yeu-thich" class="fas fa-heart"></a>
+        <a href="/login" class="fas fa-user-lock"></a>
+        <a href="/register" class="fas fa-user-plus"></a>
+      </div>
+    </header>
+
+    <!-- ================== GIỎ HÀNG ================== -->
+    <main class="cart-page">
+      <div class="cart-container">
+        <h1 class="cart-title">Giỏ hàng của bạn</h1>
+        <p class="cart-sub">Kiểm tra lại sản phẩm trước khi thanh toán nhé.</p>
+
+        <div class="cart-layout">
+          <!-- ===== SẢN PHẨM ===== -->
+          <section class="cart-items">
+            <!-- Sản phẩm 1 -->
+            <div class="cart-item">
+              <img
+                src="/uploads/1765294724381-381073852.webp"
+                class="item-img"
+                alt="Đắc Nhân Tâm"
+              />
+
+              <div class="item-info">
+                <h3 class="item-name">Đắc Nhân Tâm</h3>
+                <p class="item-author">Dale Carnegie</p>
+                <p class="item-price">120.000đ</p>
+              </div>
+
+              <div class="item-qty">
+                <button>-</button>
+                <input type="text" value="1" />
+                <button>+</button>
+              </div>
+
+              <div class="item-total">120.000đ</div>
+
+              <button class="item-remove">
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
+            </div>
+
+            <!-- Sản phẩm 2 -->
+            <div class="cart-item">
+              <img
+                src="/uploads/sachmau.webp"
+                class="item-img"
+                alt="Sách Mẫu"
+              />
+
+              <div class="item-info">
+                <h3 class="item-name">Tư Duy Nhanh Và Chậm</h3>
+                <p class="item-author">Daniel Kahneman</p>
+                <p class="item-price">185.000đ</p>
+              </div>
+
+              <div class="item-qty">
+                <button>-</button>
+                <input type="text" value="2" />
+                <button>+</button>
+              </div>
+
+              <div class="item-total">370.000đ</div>
+
+              <button class="item-remove">
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
+            </div>
+          </section>
+
+          <!-- ===== TÓM TẮT ===== -->
+          <aside class="cart-summary">
+            <h2>Tóm tắt đơn hàng</h2>
+
+            <div class="sum-row">
+              <span>Tạm tính</span>
+              <span>490.000đ</span>
+            </div>
+
+            <div class="sum-row">
+              <span>Phí vận chuyển</span>
+              <span class="free">Miễn phí</span>
+            </div>
+
+            <div class="sum-divider"></div>
+
+            <div class="sum-row sum-total">
+              <span>Tổng cộng</span>
+              <span>490.000đ</span>
+            </div>
+
+            <button class="btn-checkout">Tiến hành thanh toán</button>
+
+            <a href="/tat-ca-sach" class="btn-back">
+              <i class="fa-solid fa-arrow-left"></i>
+              Tiếp tục mua sắm
+            </a>
+          </aside>
+        </div>
+      </div>
+    </main>
+
+    <!-- ================== FOOTER GIỮ NGUYÊN ================== -->
+    <section class="footer" id="footer">
+      <div class="box-container">
+        <div class="box">
+          <h3>Các cơ sở</h3>
+          <a href="#">484 Lạch Tray...</a>
+          <a href="#">Kiến An, Hải Phòng</a>
+          <a href="#">Nghi Lộc, Nghệ An</a>
+        </div>
+
+        <div class="box">
+          <h3>Các mục</h3>
+          <a href="#home">Trang chủ</a>
+          <a href="#theloai">Giới thiệu</a>
+          <a href="#sachmoi">Sản phẩm</a>
+          <a href="#footer">Liên hệ</a>
+        </div>
+
+        <div class="box">
+          <h3>Thông tin</h3>
+          <a href="#">+911379883</a>
+          <a href="#">bluebook@gmail.com</a>
+        </div>
+
+        <div class="box">
+          <h3>Theo dõi</h3>
+          <a href="#"><i class="fab fa-facebook-f"></i> Facebook</a>
+          <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+        </div>
+      </div>
+
+      <div class="credit">© BlueBook 2025 - All rights reserved.</div>
+    </section>
+  </body>
+</html>
