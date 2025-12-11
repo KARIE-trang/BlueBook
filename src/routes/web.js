@@ -20,6 +20,9 @@ const {
   editProfile,
   getDonMua,
   getDoiMatKhau,
+  getUpdateSoLuong,
+  getXoaSanPham,
+  postThanhToan,
 } = require("../controllers/userController.js");
 
 router.get("/home", getHome);
@@ -33,8 +36,14 @@ router.get("/sanpham/book/:masach", getSach);
 
 router.get("/user/giohang", requireLogin, getGioHang);
 router.post("/user/add_giohang/:masach", requireLogin, postThemGioHang);
-
+router.get("/user/sanpham/updatesoluong", requireLogin, getUpdateSoLuong);
+router.get(
+  "/user/sanpham/xoasanpham/:magiohang/:masach",
+  requireLogin,
+  getXoaSanPham
+);
 router.get("/user/thanhtoan", requireLogin, getThanhToan);
+router.post("/user/postthanhtoan", requireLogin, postThanhToan);
 router.get("/user/dathangthanhcong", requireLogin, getDatHangThanhCong);
 router.get("/edit_profile", requireLogin, editProfile);
 router.get("/user/donmua", requireLogin, getDonMua);

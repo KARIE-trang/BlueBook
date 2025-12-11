@@ -1,4 +1,5 @@
 const connection = require("../config/database.js");
+const { SpTrongGioHang, XoaGioHang } = require("../services/giohang.js");
 
 const DanhSachDonHang = async (trangthai = "", from = null, to = null) => {
   let [kq] = await connection.query(
@@ -60,6 +61,7 @@ const ThongTinDon = async (madonhang) => {
     "select madonhang, ngaymua, trangthai , ghichu, tennguoinhan, sdt_giao,  diachi_giao from donhang where madonhang = ?",
     [madonhang]
   );
+  if (!kq.length) return null;
   if (kq[0].ngaymua) {
     kq[0].ngaymua = kq[0].ngaymua.toISOString().split("T")[0];
   }
@@ -82,10 +84,39 @@ const ThanhTien = async (madonhang) => {
   return kq[0];
 };
 
+const ThanhToan = async (
+  user_id,
+  tennguoinhan,
+  sdt_giao,
+  diachi_giao,
+  ghichu
+) => {
+  let [kq] = await connection.query(
+    `insert into donhang(user_id, tennguoinhan, sdt_giao, diachi_giao, ghichu)
+    values(?,?,?,?,?)`,
+    [user_id, tennguoinhan, sdt_giao, diachi_giao, ghichu]
+  );
+  let madonhang = kq.insertId;
+  let items = await SpTrongGioHang(user_id);
+  for (let i of items) {
+    await connection.query(
+      `insert into donhang_sach(madonhang, masach, soluong, gia) values (?,?,?,?)`,
+      [madonhang, i.masach, i.soluong, i.giaban]
+    );
+    await connection.query(
+      `UPDATE sach SET sl_tonkho = sl_tonkho - ? WHERE masach = ?`,
+      [i.soluong, i.masach]
+    );
+  }
+  await XoaGioHang(user_id);
+  return madonhang;
+};
+
 module.exports = {
   DanhSachDonHang,
   CapNhatTrangThai,
   ThongTinDon,
   SanPhamTrongDon,
   ThanhTien,
+  ThanhToan,
 };

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Thanh Toán - BlueBook</title>
 
-    <!-- Icon + Font -->
+    <!-- FONT & ICON -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -15,196 +15,140 @@
       rel="stylesheet"
     />
 
-    <!-- CSS chung -->
+    <!-- CSS chung user -->
     <link rel="stylesheet" href="/users/css/home.css" />
-    <!-- CSS riêng -->
+    <!-- CSS riêng thanh toán -->
     <link rel="stylesheet" href="/users/css/thanhtoan.css" />
   </head>
 
   <body>
-    <!-- ================== HEADER GIỮ NGUYÊN ================== -->
+    <!-- ========================== HEADER GIỮ NGUYÊN ========================== -->
     <header>
-      <a href="/" class="logo">BlueBook</a>
+      <a href="/home" class="logo">BlueBook</a>
 
       <nav class="navbar">
-        <a href="/">Trang Chủ</a>
-        <a href="/#theloai">Giới Thiệu</a>
-        <a href="/#sachmoi">Sản Phẩm</a>
+        <a href="/home">Trang Chủ</a>
+        <a href="/sanpham">Sản Phẩm</a>
         <a href="#footer">Liên Hệ</a>
       </nav>
 
       <div class="icons">
         <i class="fas fa-bars" id="menu-bars"></i>
-        <a href="/#timkiem" class="fas fa-search" title="Tìm kiếm"></a>
-        <a href="/cart" class="fas fa-shopping-cart" title="Giỏ hàng"></a>
-        <a href="/yeu-thich" class="fas fa-heart" title="Yêu thích"></a>
-        <a href="/login" class="fas fa-user-lock" title="Đăng nhập"></a>
-        <a href="/register" class="fas fa-user-plus" title="Đăng ký"></a>
+        <a href="/user/giohang" class="fas fa-shopping-cart"></a>
+        <a href="/edit_profile" class="fas fa-user"></a>
+        <a href="/logout" class="fas fa-right-from-bracket"></a>
       </div>
     </header>
 
-    <!-- ================== THANH TOÁN ================== -->
+    <!-- ========================== MAIN: THANH TOÁN ========================== -->
     <main class="checkout-page">
       <div class="checkout-container">
-        <!-- Breadcrumb -->
-        <nav class="breadcrumb">
-          <a href="/">Trang chủ</a>
-          <span>/</span>
-          <a href="/cart">Giỏ hàng</a>
-          <span>/</span>
-          <span class="current">Thanh toán</span>
-        </nav>
+        <h1 class="checkout-title">Thanh Toán Đơn Hàng</h1>
+        <p class="checkout-sub">Vui lòng nhập thông tin nhận hàng của bạn.</p>
 
-        <!-- Tiêu đề -->
-        <header class="checkout-header">
-          <div>
-            <h1>Thanh toán</h1>
-            <p>Điền thông tin nhận hàng và kiểm tra lại đơn của bạn.</p>
-          </div>
-          <p class="checkout-step">Bước 2 / 2</p>
-        </header>
+        <div class="checkout-layout">
+          <!-- ================== CỘT TRÁI: THÔNG TIN ================== -->
+          <section class="checkout-info">
+            <h2>Thông Tin Nhận Hàng</h2>
 
-        <!-- Layout 2 cột -->
-        <section class="checkout-layout">
-          <!-- ===== CỘT TRÁI: THÔNG TIN NHẬN HÀNG ===== -->
-          <div class="checkout-left">
-            <!-- Thông tin người nhận -->
-            <div class="checkout-card">
-              <h2>Thông tin người nhận</h2>
+            <form id="formThanhToan" action="/user/postthanhtoan" method="post">
+              <label>Họ Và Tên <span class="batbuoc">*</span></label>
+              <input
+                type="text"
+                placeholder="Nguyễn Văn A"
+                name="tennguoinhan"
+                required
+              />
 
-              <!-- Demo: form, sau này m đổi action + name input theo backend -->
-              <form>
-                <div class="form-grid">
-                  <div class="form-group">
-                    <label for="hoten">Họ và tên</label>
-                    <input
-                      type="text"
-                      id="hoten"
-                      placeholder="Nguyễn Văn A"
-                      value="Nguyễn Thị Trang"
-                    />
-                  </div>
+              <label>Số Điện Thoại <span class="batbuoc">*</span></label>
+              <input
+                type="text"
+                placeholder="0912345678"
+                name="sdt_giao"
+                required
+              />
 
-                  <div class="form-group">
-                    <label for="sdt">Số điện thoại</label>
-                    <input
-                      type="text"
-                      id="sdt"
-                      placeholder="0123 456 789"
-                      value="0901 234 567"
-                    />
-                  </div>
+              <label>Địa Chỉ Giao Hàng <span class="batbuoc">*</span></label>
+              <input
+                type="text"
+                placeholder="168 Mạc Quyết, Dương Kinh, Hải Phòng"
+                name="diachi_giao"
+                required
+              />
 
-                  <div class="form-group full">
-                    <label for="diachi">Địa chỉ nhận hàng</label>
-                    <input
-                      type="text"
-                      id="diachi"
-                      placeholder="Ví dụ: 484 Lạch Tray, Đổng Quốc Bình, Lê Chân, Hải Phòng"
-                      value="484 Lạch Tray, Đổng Quốc Bình, Lê Chân, Hải Phòng"
-                    />
-                  </div>
+              <label>Ghi Chú Thêm</label>
+              <textarea
+                placeholder="Ví dụ: Giao giờ hành chính..."
+                name="ghichu"
+              ></textarea>
+            </form>
+          </section>
 
-                  <div class="form-group full">
-                    <label for="ghichu">Ghi chú cho đơn hàng</label>
-                    <textarea
-                      id="ghichu"
-                      rows="3"
-                      placeholder="VD: Giao giờ hành chính, gọi trước khi giao..."
-                    >
-Giao trong giờ hành chính, gọi trước khi đến.</textarea
-                    >
-                  </div>
-                </div>
-              </form>
-            </div>
+          <!-- ================== CỘT PHẢI: ĐƠN HÀNG ================== -->
+          <aside class="checkout-summary">
+            <h2>Đơn Hàng Của Bạn</h2>
 
-            <!-- Ghi chú phương thức thanh toán (mặc định COD) -->
-            <div class="checkout-card">
-              <h2>Phương thức thanh toán</h2>
-              <p class="payment-note">
-                <i class="fa-solid fa-money-bill-wave"></i>
-                Đơn hàng này sẽ được thanh toán bằng hình thức
-                <strong>Thanh toán khi nhận hàng (COD)</strong>. Bạn chỉ cần
-                chuẩn bị tiền mặt khi nhận sách từ nhân viên giao hàng.
-              </p>
-            </div>
-          </div>
-
-          <!-- ===== CỘT PHẢI: TÓM TẮT ĐƠN HÀNG (CÓ ẢNH) ===== -->
-          <aside class="checkout-right">
-            <div class="checkout-card summary-card">
-              <h2>Đơn hàng của bạn</h2>
-
+            <div class="summary-items">
               <!-- Sản phẩm 1 -->
-              <div class="summary-item">
-                <div class="summary-thumb">
-                  <img
-                    src="/uploads/1765294724381-381073852.webp"
-                    alt="Đắc Nhân Tâm"
-                  />
+              <% for(let i = 0 ; i < sach.length; i++){ %>
+              <div class="summary-book">
+                <div class="summary-book-left">
+                  <div class="summary-book-img">
+                    <img src="/uploads/<%=sach[i].hinhanh%>" />
+                  </div>
+
+                  <div class="summary-book-info">
+                    <div class="summary-book-title"><%=sach[i].tensach%></div>
+                    <div class="summary-book-qty">
+                      Số lượng: <%=sach[i].soluong%>
+                    </div>
+                    <div class="summary-book-unit">
+                      Giá: <%=Number(sach[i].giaban).toLocaleString("vi-VN")%>đ
+                    </div>
+                  </div>
                 </div>
-                <div class="summary-info">
-                  <p class="summary-name">Đắc Nhân Tâm</p>
-                  <p class="summary-meta">Số lượng: 1</p>
+
+                <div class="summary-book-price">
+                  <%=Number(sach[i].thanhtien).toLocaleString("vi-VN")%>đ
                 </div>
-                <p class="summary-price">120.000đ</p>
               </div>
-
-              <!-- Sản phẩm 2 -->
-              <div class="summary-item">
-                <div class="summary-thumb">
-                  <img src="/uploads/sachmau.webp" alt="Tư Duy Nhanh Và Chậm" />
-                </div>
-                <div class="summary-info">
-                  <p class="summary-name">Tư Duy Nhanh Và Chậm</p>
-                  <p class="summary-meta">Số lượng: 2</p>
-                </div>
-                <p class="summary-price">370.000đ</p>
-              </div>
-
-              <div class="summary-divider"></div>
-
-              <div class="summary-row">
-                <span>Tạm tính</span>
-                <span>490.000đ</span>
-              </div>
-
-              <div class="summary-row">
-                <span>Phí vận chuyển</span>
-                <span class="free-ship">Miễn phí</span>
-              </div>
-
-              <div class="summary-row">
-                <span>Giảm giá</span>
-                <span>0đ</span>
-              </div>
-
-              <div class="summary-divider"></div>
-
-              <div class="summary-row summary-total">
-                <span>Tổng cộng</span>
-                <span>490.000đ</span>
-              </div>
-
-              <button class="btn-place-order">Đặt hàng</button>
-
-              <a href="/cart" class="btn-back-cart">
-                <i class="fa-solid fa-arrow-left"></i>
-                Quay lại giỏ hàng
-              </a>
+              <% } %>
             </div>
+
+            <div class="summary-row">
+              <span>Tạm Tính</span>
+              <span
+                ><%=Number(tongtien.tongtien).toLocaleString("vi-VN")%>đ</span
+              >
+            </div>
+
+            <div class="summary-row">
+              <span>Phí Vận Chuyển</span>
+              <span>Miễn Phí</span>
+            </div>
+
+            <div class="summary-total">
+              <span>Tổng Thanh Toán</span>
+              <span
+                ><%=Number(tongtien.tongtien).toLocaleString("vi-VN")%>đ</span
+              >
+            </div>
+
+            <button type="submit" form="formThanhToan" class="btn-order">
+              ĐẶT HÀNG
+            </button>
+            <a href="/user/giohang" class="btn-cancel">Hủy bỏ</a>
           </aside>
-        </section>
+        </div>
       </div>
     </main>
 
-    <!-- ================== FOOTER GIỮ NGUYÊN ================== -->
+    <!-- ========================== FOOTER GIỮ NGUYÊN ========================== -->
     <section class="footer" id="footer">
       <div class="box-container">
         <div class="box">
           <h3>Các cơ sở</h3>
-          <a href="#">484 Lạch Tray, Đổng Quốc Bình, Lê Chân, Hải Phòng</a>
+          <a href="#">484 Lạch Tray, Đổng Quốc Bình, Hải Phòng</a>
           <a href="#">Kiến An, Hải Phòng</a>
           <a href="#">Nghi Lộc, Nghệ An</a>
         </div>
@@ -235,5 +179,17 @@ Giao trong giờ hành chính, gọi trước khi đến.</textarea
         © <span>BlueBook</span> 2025 - All rights reserved.
       </div>
     </section>
+
+    <!-- JS MENU -->
+    <script>
+      const menu = document.querySelector("#menu-bars");
+      const navbar = document.querySelector(".navbar");
+      if (menu) {
+        menu.onclick = () => {
+          menu.classList.toggle("fa-times");
+          navbar.classList.toggle("active");
+        };
+      }
+    </script>
   </body>
 </html>
