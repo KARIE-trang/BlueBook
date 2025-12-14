@@ -98,7 +98,11 @@ const getSanPham = async (req, res) => {
 const getSach = async (req, res) => {
   let masach = req.params.masach;
   let sach = await getEditSach(masach);
-  res.render("user/sach", { sach });
+  res.render("user/sach", {
+    sach,
+    msg: req.query.msg || null,
+    users: req.session.users,
+  });
 };
 
 module.exports = {

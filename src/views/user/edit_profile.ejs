@@ -24,20 +24,34 @@
   <body>
     <!-- ============= HEADER GIỮ NGUYÊN ============= -->
     <header>
-      <a href="/" class="logo">BlueBook</a>
+      <a href="/home" class="logo">BlueBook</a>
 
       <nav class="navbar">
-        <a href="/">Trang Chủ</a>
-        <a href="/#theloai">Giới Thiệu</a>
-        <a href="/#sachmoi">Sản Phẩm</a>
+        <a href="/home">Trang Chủ</a>
+        <a href="/sanpham">Sản Phẩm</a>
         <a href="#footer">Liên Hệ</a>
       </nav>
 
       <div class="icons">
+        <% if (users) { %>
         <i class="fas fa-bars" id="menu-bars"></i>
-        <a href="/#timkiem" class="fas fa-search" title="Tìm kiếm"></a>
-        <a href="/cart" class="fas fa-shopping-cart" title="Giỏ hàng"></a>
-        <a href="/profile" class="fas fa-user" title="Tài khoản"></a>
+        <a
+          href="/user/giohang"
+          class="fas fa-shopping-cart"
+          title="Giỏ hàng"
+        ></a>
+        <!-- Đã đăng nhập -->
+        <a href="/edit_profile" class="fas fa-user" title="Trang cá nhân"></a>
+        <a
+          href="/logout"
+          class="fas fa-right-from-bracket"
+          title="Đăng xuất"
+        ></a>
+        <% } else { %>
+        <!-- Chưa đăng nhập -->
+        <a href="/login" class="fas fa-user-lock" title="Đăng nhập"></a>
+        <a href="/register" class="fas fa-user-plus" title="Đăng ký"></a>
+        <% } %>
       </div>
     </header>
 
@@ -54,8 +68,8 @@
               </div>
               <div class="account-user-text">
                 <!-- sau này bind EJS -->
-                <p class="account-name">Nguyễn Thị Trang</p>
-                <p class="account-username">Trang123</p>
+                <p class="account-name"><%=user['hoten']%></p>
+                <p class="account-username"><%=user['taikhoan']%></p>
                 <button class="account-edit-link" type="button">
                   <i class="fa-solid fa-pen"></i> Sửa hồ sơ
                 </button>
@@ -64,11 +78,11 @@
 
             <nav class="account-menu">
               <p class="account-menu-title">Tài Khoản Của Tôi</p>
-              <a href="/profile" class="account-menu-item active">Hồ sơ</a>
-              <a href="/orders" class="account-menu-item">Đơn mua</a>
-              <a href="/change-password" class="account-menu-item">
-                Đổi mật khẩu
-              </a>
+              <a href="/edit_profile" class="account-menu-item active">Hồ sơ</a>
+              <a href="/user/donmua" class="account-menu-item">Đơn mua</a>
+              <a href="/user/doimatkhau" class="account-menu-item"
+                >Đổi mật khẩu</a
+              >
             </nav>
           </aside>
 
@@ -81,11 +95,7 @@
               </div>
 
               <div class="profile-content">
-                <form
-                  class="profile-form"
-                  method="POST"
-                  action="/profile/update"
-                >
+                <form class="profile-form" method="POST" action="/edit_profile">
                   <div class="profile-fields">
                     <!-- Tên đăng nhập -->
                     <div class="profile-row">
@@ -95,7 +105,7 @@
                           type="text"
                           name="taikhoan"
                           class="profile-input input-readonly"
-                          value="tranhnguyen719"
+                          value="<%=user['taikhoan']%>"
                           readonly
                         />
                         <p class="profile-help">
@@ -113,7 +123,7 @@
                           name="hoten"
                           class="profile-input"
                           placeholder="Nhập họ và tên"
-                          value="Nguyễn Thị Trang"
+                          value="<%=user['hoten']%>"
                           required
                         />
                       </div>
@@ -128,7 +138,7 @@
                           name="email"
                           class="profile-input"
                           placeholder="Nhập email"
-                          value="Bluebook.User@gmail.com"
+                          value="<%=user['email']%>"
                           required
                         />
                       </div>
@@ -141,6 +151,11 @@
                         <button type="submit" class="btn-save">Lưu</button>
                       </div>
                     </div>
+                    <% if (error === "emailtontai") { %>
+                    <div class="alert alert-error">Email đã tồn tại</div>
+                    <% } %> <% if (success === "thanhcong") { %>
+                    <div class="alert alert-success">Cập nhật thành công</div>
+                    <% } %>
                   </div>
                 </form>
               </div>
@@ -186,5 +201,10 @@
         © <span>BlueBook</span> 2025 - All rights reserved.
       </div>
     </section>
+    <script>
+      setTimeout(() => {
+        document.querySelectorAll(".alert").forEach((el) => el.remove());
+      }, 2500);
+    </script>
   </body>
 </html>

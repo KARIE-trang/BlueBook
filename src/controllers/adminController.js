@@ -310,7 +310,6 @@ const postCapNhatTrangThai = async (req, res) => {
 
 const getChiTietDonHang = async (req, res) => {
   let madonhang = req.params.madonhang;
-
   let thongtindon = await ThongTinDon(madonhang);
   let sanpham = await SanPhamTrongDon(madonhang);
   let thanhtien = await ThanhTien(madonhang);

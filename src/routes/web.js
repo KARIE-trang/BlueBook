@@ -44,8 +44,13 @@ router.get(
 );
 router.get("/user/thanhtoan", requireLogin, getThanhToan);
 router.post("/user/postthanhtoan", requireLogin, postThanhToan);
-router.get("/user/dathangthanhcong", requireLogin, getDatHangThanhCong);
+router.get(
+  "/user/dathangthanhcong/:madonhang",
+  requireLogin,
+  getDatHangThanhCong
+);
 router.get("/edit_profile", requireLogin, editProfile);
+router.post("/edit_profile", requireLogin, editProfile);
 router.get("/user/donmua", requireLogin, getDonMua);
 router.get("/user/doimatkhau", requireLogin, getDoiMatKhau);
 

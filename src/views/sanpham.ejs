@@ -14,16 +14,10 @@
       href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&display=swap"
       rel="stylesheet"
     />
-
-    <!-- CSS chung của user -->
     <link rel="stylesheet" href="/users/css/home.css" />
-
-    <!-- CSS riêng cho trang tất cả sản phẩm -->
     <link rel="stylesheet" href="/users/css/sanpham.css" />
   </head>
-
   <body>
-    <!-- HEADER -->
     <header>
       <a href="/home" class="logo">BlueBook</a>
 
@@ -163,20 +157,23 @@
                 >
                   Xem chi tiết
                 </a>
+                <%if(listsach[i].sl_tonkho){ %>
+
                 <form
                   action="/user/add_giohang/<%= listsach[i].masach %>"
                   method="POST"
                 >
+                  <input type="hidden" name="source" value="list" />
                   <button type="submit" class="btn-add">
                     <i class="fa-solid fa-cart-plus"></i>
                   </button>
                 </form>
+                <% }%>
               </div>
             </article>
             <% } %>
           </div>
 
-          <!-- chỉ hiện pagination khi có sách -->
           <nav class="pagination">
             <span class="disabled">
               <i class="fa-solid fa-chevron-left"></i>

@@ -24,20 +24,34 @@
   <body>
     <!-- ============= HEADER GIỮ NGUYÊN ============= -->
     <header>
-      <a href="/" class="logo">BlueBook</a>
+      <a href="/home" class="logo">BlueBook</a>
 
       <nav class="navbar">
-        <a href="/">Trang Chủ</a>
-        <a href="/#theloai">Giới Thiệu</a>
-        <a href="/#sachmoi">Sản Phẩm</a>
+        <a href="/home">Trang Chủ</a>
+        <a href="/sanpham">Sản Phẩm</a>
         <a href="#footer">Liên Hệ</a>
       </nav>
 
       <div class="icons">
+        <% if (users) { %>
         <i class="fas fa-bars" id="menu-bars"></i>
-        <a href="/#timkiem" class="fas fa-search" title="Tìm kiếm"></a>
-        <a href="/cart" class="fas fa-shopping-cart" title="Giỏ hàng"></a>
-        <a href="/profile" class="fas fa-user" title="Tài khoản"></a>
+        <a
+          href="/user/giohang"
+          class="fas fa-shopping-cart"
+          title="Giỏ hàng"
+        ></a>
+        <!-- Đã đăng nhập -->
+        <a href="/edit_profile" class="fas fa-user" title="Trang cá nhân"></a>
+        <a
+          href="/logout"
+          class="fas fa-right-from-bracket"
+          title="Đăng xuất"
+        ></a>
+        <% } else { %>
+        <!-- Chưa đăng nhập -->
+        <a href="/login" class="fas fa-user-lock" title="Đăng nhập"></a>
+        <a href="/register" class="fas fa-user-plus" title="Đăng ký"></a>
+        <% } %>
       </div>
     </header>
 
@@ -82,13 +96,6 @@
               </div>
 
               <!-- Tabs lọc trạng thái -->
-              <div class="orders-tabs">
-                <button class="orders-tab active">Tất cả</button>
-                <button class="orders-tab">Chờ xác nhận</button>
-                <button class="orders-tab">Đang giao</button>
-                <button class="orders-tab">Đã giao</button>
-                <button class="orders-tab">Đã hủy</button>
-              </div>
 
               <!-- Danh sách đơn -->
               <div class="orders-list">
@@ -146,53 +153,9 @@
                       <span class="order-total-value">300.000đ</span>
                     </div>
                     <div class="order-actions">
-                      <a href="/orders/1" class="btn-outline-sm">
-                        Xem chi tiết
-                      </a>
                       <button type="button" class="btn-primary-sm">
-                        Mua lại
-                      </button>
-                    </div>
-                  </div>
-                </article>
-
-                <!-- Thêm vài đơn demo nữa nếu muốn -->
-                <article class="order-item">
-                  <div class="order-item-header">
-                    <div class="order-left">
-                      <span class="order-code">Mã đơn: #DH002</span>
-                      <span class="order-date">Ngày đặt: 05/12/2025</span>
-                    </div>
-                    <span class="order-status status-huy">Đã hủy</span>
-                  </div>
-
-                  <div class="order-item-body">
-                    <div class="order-product">
-                      <div class="order-product-thumb">
-                        <img
-                          src="/users/img/book-placeholder.jpg"
-                          alt="Tâm Lý Học Tội Phạm"
-                        />
-                      </div>
-                      <div class="order-product-info">
-                        <h3 class="order-product-name">Tâm Lý Học Tội Phạm</h3>
-                        <p class="order-product-meta">Số lượng: 1</p>
-                      </div>
-                      <div class="order-product-price">
-                        <span class="price">145.000đ</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="order-item-footer">
-                    <div class="order-total">
-                      <span>Tổng số tiền:</span>
-                      <span class="order-total-value">145.000đ</span>
-                    </div>
-                    <div class="order-actions">
-                      <a href="/orders/2" class="btn-outline-sm">
                         Xem chi tiết
-                      </a>
+                      </button>
                     </div>
                   </div>
                 </article>

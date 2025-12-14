@@ -232,3 +232,62 @@
 .book-meta-desc .value {
   text-transform: none !important;
 }
+/* ===== TOAST SUCCESS ===== */
+.toast-success {
+  position: fixed;
+  top: 90px; /* dưới header */
+  right: 24px;
+  z-index: 9999;
+
+  background: #e9f9f0;
+  color: #1e7f4f;
+
+  padding: 12px 18px;
+  border-left: 5px solid #2ecc71;
+  border-radius: 10px;
+
+  font-size: 14px;
+  font-weight: 600;
+  font-family: "Nunito", sans-serif;
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+
+  animation: slideIn 0.35s ease, fadeOut 0.5s ease 2.2s forwards;
+}
+
+/* Icon (nếu muốn thêm ✔) */
+.toast-success::before {
+  content: "✔";
+  margin-right: 8px;
+  font-weight: 900;
+}
+
+/* Animation vào */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Animation biến mất */
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+}
+.out-stock {
+  margin-top: 16px;
+  padding: 10px 14px;
+  background: #fff3f3;
+  color: #c0392b;
+  border-left: 4px solid #e74c3c;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 15px;
+}
